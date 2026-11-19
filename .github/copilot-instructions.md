@@ -1,0 +1,11 @@
+# Project Rules for Copilot
+- **Framework:** Astro + Tailwind CSS
+- **Vibe:** High-end, corporate, professional (like Kyndryl or Accenture). No emojis. No amateur UI elements. Use clean, editorial typography.
+- **Colors (Use exact Hex codes):**
+  - Primary Green: `#3A6931`
+  - Primary Dark: `#2A4D24`
+  - Accent Copper: `#B5653A`
+  - Surface (Warm Off-White): `#F7F6F2`
+  - Border: `#E5E3DC`
+  - Text (Charcoal): `#1F2421`
+- **Layout Rules:** Generous whitespace, clean grids, subtle borders instead of heavy shadows.

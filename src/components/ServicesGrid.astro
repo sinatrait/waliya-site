@@ -1,0 +1,50 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+
+const services = [
+	{
+		title: "Website Design & Development",
+		icon: "website",
+		description:
+			"Professional, responsive websites that give your business a clear and credible digital presence.",
+	},
+	{
+		title: "Website Maintenance",
+		icon: "maintenance",
+		description:
+			"Ongoing updates and practical support to keep your website current, reliable, and working as intended.",
+	},
+	{
+		title: "Graphic Design & Branding",
+		icon: "branding",
+		description:
+			"Thoughtful visual identities and design materials that help your business communicate with consistency.",
+	},
+	{
+		title: "Digital Marketing",
+		icon: "marketing",
+		description:
+			"Focused digital campaigns and channel support to help you reach and engage the right audience.",
+	},
+];
+---
+
+<section class="bg-white py-20 md:py-24">
+	<div class="mx-auto max-w-7xl px-6">
+		<div class="max-w-2xl">
+			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green">
+				What we do
+			</p>
+			<h2 class="mt-4 text-3xl font-semibold tracking-tight text-primary-dark md:text-4xl">
+				Our Services
+			</h2>
+			<p class="mt-4 text-lg leading-8 text-text">
+				Practical digital solutions to help your business build, maintain, and grow its online presence.
+			</p>
+		</div>
+
+		<div class="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">
+			{services.map((service) => <ServiceCard {...service} />)}
+		</div>
+	</div>
+</section>

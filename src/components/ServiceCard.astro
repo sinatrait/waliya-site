@@ -1,0 +1,49 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	icon: "website" | "maintenance" | "branding" | "marketing";
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<article class="border border-border border-l-4 border-l-primary-green bg-white p-7">
+	<svg
+		class="mb-6 size-8 shrink-0 text-primary-green"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		aria-hidden="true"
+	>
+		{icon === "website" && (
+			<>
+				<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"></rect>
+				<path d="M3.5 8.5h17M7 6.5h.01M10 6.5h.01M10 12l-2 2 2 2M14 16l2-2-2-2M13 11.5l-2 5"></path>
+			</>
+		)}
+		{icon === "maintenance" && (
+			<>
+				<path d="M14.5 6.2a5 5 0 0 0-6.7 6.7l-4.1 4.2a1.8 1.8 0 0 0 2.5 2.5l4.2-4.1a5 5 0 0 0 6.7-6.7l-3 3-2.6-.7-.7-2.6 3.7-2.3Z"></path>
+				<path d="m15.5 15.5 4.2 4.2"></path>
+			</>
+		)}
+		{icon === "branding" && (
+			<>
+				<path d="m4 16.8-.8 4 4-.8L19 8.2a2.8 2.8 0 0 0-4-4L4 16.8Z"></path>
+				<path d="m13.5 5.7 4.8 4.8M4 16.8l4 4"></path>
+			</>
+		)}
+		{icon === "marketing" && (
+			<>
+				<path d="M4 19.5h16M6.5 16v-4M11 16V8M15.5 16v-6M5 8.5l5-3 4 2 5-3"></path>
+				<path d="M15.5 4.5H19v3.5"></path>
+			</>
+		)}
+	</svg>
+	<h3 class="text-xl font-semibold tracking-tight text-primary-dark">{title}</h3>
+	<p class="mt-3 leading-7 text-text">{description}</p>
+</article>

@@ -1,0 +1,133 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const stories = [
+	{
+		client: "The United Trust",
+		image: "/images/united-trust.jpg",
+		imageAlt: "The United Trust homepage",
+		profile:
+			"A non-profit organization with more than 31 years of service, focused on education, healthcare, and community welfare.",
+		challenge:
+			"Presenting decades of diverse charitable work — including schools, hospitals, food programs, and housing — in a way that feels credible, organized, and easy for donors and partners to understand.",
+		solution:
+			"We designed and developed a comprehensive website that organizes the Trust’s initiatives, highlights its ISO certification, and tells the story of its mission.",
+		result:
+			"A professional, trustworthy online presence that effectively communicates the scale and impact of the Trust’s work.",
+		url: "https://www.theunitedtrust.in/",
+	},
+	{
+		client: "The United Group",
+		image: "/images/united-group.jpg",
+		imageAlt: "The United Group homepage",
+		profile:
+			"A diversified corporate group operating in finance, investment, infrastructure, and general trading.",
+		challenge:
+			"Creating a digital presence that reflects the scale and professionalism of a multi-sector business group while clearly explaining four distinct business pathways.",
+		solution:
+			"We built a structured corporate website that presents each business division clearly, communicates the Group’s values of Integrity, Excellence, and Innovation, and establishes authority across its industries.",
+		result:
+			"A central, credible hub for the Group’s diverse operations, designed to connect with prospective partners and clients.",
+		url: "https://www.theunitedgroup.co.in/",
+	},
+	{
+		client: "Soulax",
+		image: "/images/soulax.jpg",
+		imageAlt: "Soulax homepage",
+		profile:
+			"A deep-tech company specializing in Agentic AI, IoT, and Big Data for manufacturing, logistics, and supply chain.",
+		challenge:
+			"Translating complex technical capabilities — including AI, cloud engineering, and IoT platforms — into clear, outcome-driven messaging for enterprise decision-makers.",
+		solution:
+			"We developed a modern, authoritative website that leads with real-world applications and measurable results, positioning Soulax as a strategic technology partner.",
+		result:
+			"A high-end digital presence that clearly communicates Soulax’s value proposition and supports its sales and partnership efforts.",
+		url: "https://www.soulax.io/",
+	},
+	{
+		client: "Aleena Mansur",
+		image: "/images/aleena-mansur.jpg",
+		imageAlt: "Aleena Mansur homepage",
+		profile:
+			"A professional Supercross racer and trailblazer in Indian motorsport, competing at national and international levels.",
+		challenge:
+			"Building a high-energy personal brand website that captures the adrenaline of the sport while professionally presenting her achievements, sponsorship opportunities, and ambition to compete in global events like the Dakar Rally.",
+		solution:
+			"We designed and developed a dynamic, visually striking site that showcases her racing career, integrates sponsor visibility, and tells her story as a rising star in motorsport.",
+		result:
+			"A powerful personal brand hub that attracts sponsorships, media attention, and connects her with a global audience of motorsport fans.",
+		url: "https://www.aleenamansur.com/",
+	},
+];
+---
+
+<BaseLayout
+	title="Client Stories"
+	description="See how we have helped businesses and organizations build credible online presences."
+>
+	<section class="mx-auto max-w-7xl px-6 py-20 md:py-28">
+		<div class="max-w-3xl">
+			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green">
+				Client stories
+			</p>
+			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-primary-dark md:text-5xl">
+				Digital work that moves organizations forward.
+			</h1>
+			<p class="mt-5 text-lg leading-8 text-text">
+				Discover how we help organizations communicate their work, clarify their offering, and
+				build a stronger online presence.
+			</p>
+		</div>
+
+		<div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+			{
+				stories.map((story) => (
+					<article class="group flex flex-col overflow-hidden rounded-t-md border border-border bg-white">
+						<div class="h-48 overflow-hidden border-b border-border">
+							<img
+								src={story.image}
+								alt={story.imageAlt}
+								loading="lazy"
+								class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+							/>
+						</div>
+						<div class="flex flex-1 flex-col p-7 md:p-8">
+							<div>
+								<h2 class="text-2xl font-semibold tracking-tight text-primary-dark">
+									{story.client}
+								</h2>
+								<dl class="mt-7 space-y-6">
+									<div>
+										<dt class="text-sm font-semibold text-primary-green">Client Profile</dt>
+										<dd class="mt-2 leading-7 text-text">{story.profile}</dd>
+									</div>
+									<div>
+										<dt class="text-sm font-semibold text-primary-green">The Challenge</dt>
+										<dd class="mt-2 leading-7 text-text">{story.challenge}</dd>
+									</div>
+									<div>
+										<dt class="text-sm font-semibold text-primary-green">What Waliya Did</dt>
+										<dd class="mt-2 leading-7 text-text">{story.solution}</dd>
+									</div>
+									<div>
+										<dt class="text-sm font-semibold text-primary-green">The Result</dt>
+										<dd class="mt-2 leading-7 text-text">{story.result}</dd>
+									</div>
+								</dl>
+							</div>
+							<a
+								href={story.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="mt-8 inline-flex w-fit items-center gap-2 border-b border-primary-green pb-1 text-sm font-semibold text-primary-green transition-colors hover:text-primary-dark"
+							>
+								Visit Website
+								<span aria-hidden="true">↗</span>
+							</a>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</section>
+</BaseLayout>

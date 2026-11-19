@@ -1,0 +1,31 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-surface">
+	<div class="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 md:flex-row md:items-center md:justify-between">
+		<div class="space-y-2">
+			<a href="/" class="text-lg font-bold tracking-tight text-primary-dark">
+				Waliya Enterprizes
+			</a>
+			<p class="text-sm text-text">© {year} Waliya Enterprizes. All rights reserved.</p>
+		</div>
+
+		<nav aria-label="Footer navigation" class="flex flex-wrap gap-x-6 gap-y-3">
+			<a href="/" class="text-sm text-text transition-colors hover:text-primary-green">Home</a>
+			<a href="/services" class="text-sm text-text transition-colors hover:text-primary-green">
+				Services
+			</a>
+			<a href="/about" class="text-sm text-text transition-colors hover:text-primary-green">About</a>
+			<a
+				href="/client-stories"
+				class="text-sm text-text transition-colors hover:text-primary-green"
+			>
+				Client Stories
+			</a>
+			<a href="/contact" class="text-sm text-text transition-colors hover:text-primary-green">
+				Contact
+			</a>
+		</nav>
+	</div>
+</footer>

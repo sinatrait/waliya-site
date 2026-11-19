@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const values = [
+	{
+		title: "Practical",
+		description: "Clear, useful support shaped around real business needs.",
+	},
+	{
+		title: "Unified",
+		description: "Digital and business services coordinated under one roof.",
+	},
+	{
+		title: "Scalable",
+		description: "Flexible support that can adapt as priorities and businesses grow.",
+	},
+];
+---
+
+<BaseLayout
+	title="About Us"
+	description="Learn how Waliya Enterprizes brings digital solutions and business services under one roof."
+>
+	<section class="mx-auto max-w-7xl px-6 py-20 md:py-28">
+		<div class="grid gap-14 lg:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.75fr)] lg:gap-20">
+			<div class="max-w-3xl">
+				<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green">
+					About Waliya
+				</p>
+				<h1 class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-primary-dark md:text-5xl">
+					Built to Help Businesses Start, Operate, Improve, and Grow.
+				</h1>
+				<div class="mt-8 space-y-5 text-lg leading-8 text-text">
+					<p>
+						Starting and running a business means balancing many priorities. A strong digital
+						presence matters, but so do dependable systems, clear processes, and practical
+						support behind the scenes.
+					</p>
+					<p>
+						Waliya Enterprizes brings digital and business services under one roof. From
+						websites and branding to technology guidance and operational support, we help
+						connect the pieces that make a business work.
+					</p>
+					<p>
+						Our approach is straightforward: understand what you need, provide useful support,
+						and adapt as your business develops. Whether you are establishing a new venture or
+						improving an existing operation, we help you take the next step with confidence.
+					</p>
+				</div>
+			</div>
+
+			<aside class="h-fit border border-border bg-white p-8 md:p-10">
+				<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green">
+					What guides us
+				</p>
+				<ul class="mt-7 divide-y divide-border">
+					{
+						values.map((value) => (
+							<li class="py-6 first:pt-0 last:pb-0">
+								<h2 class="text-xl font-semibold text-primary-dark">{value.title}</h2>
+								<p class="mt-2 leading-7 text-text">{value.description}</p>
+							</li>
+						))
+					}
+				</ul>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

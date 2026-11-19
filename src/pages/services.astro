@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+
+const services = [
+	{
+		title: "Website Design & Development",
+		icon: "website",
+		description:
+			"We design and develop responsive websites that present your business clearly and make it easy for customers to connect with you.",
+	},
+	{
+		title: "Website Maintenance",
+		icon: "maintenance",
+		description:
+			"Keep your website current and dependable with ongoing updates, routine checks, and practical technical support.",
+	},
+	{
+		title: "Graphic Design & Branding",
+		icon: "branding",
+		description:
+			"Build a consistent visual identity with considered brand assets and design materials for your business.",
+	},
+	{
+		title: "Digital Marketing",
+		icon: "marketing",
+		description:
+			"Reach your audience with thoughtful digital marketing support tailored to your goals, channels, and resources.",
+	},
+];
+---
+
+<BaseLayout
+	title="Our Services"
+	description="Explore our web design, maintenance, branding, and digital marketing services."
+>
+	<section class="mx-auto max-w-7xl px-6 py-20 md:py-28">
+		<div class="max-w-3xl">
+			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green">
+				How we can help
+			</p>
+			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-primary-dark md:text-5xl">
+				Our Digital Solutions
+			</h1>
+			<p class="mt-5 text-lg leading-8 text-text">
+				From establishing your digital presence to keeping it current and reaching your audience,
+				our services help your business make steady progress online.
+			</p>
+		</div>
+
+		<div class="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-2">
+			{services.map((service) => <ServiceCard {...service} />)}
+		</div>
+	</section>
+</BaseLayout>
