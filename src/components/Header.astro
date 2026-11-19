@@ -32,13 +32,71 @@ const links = [
 		</nav>
 
 		<div class="flex shrink-0 items-center gap-5">
-			<span class="text-sm font-medium text-text md:hidden">Menu</span>
+			<button
+				id="mobile-menu-button"
+				type="button"
+				class="inline-flex items-center gap-2 text-sm font-medium text-text md:hidden"
+				aria-controls="mobile-menu"
+				aria-expanded="false"
+			>
+				<span>Menu</span>
+				<svg
+					class="size-5"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					aria-hidden="true"
+				>
+					<path d="M4 7h16M4 12h16M4 17h16"></path>
+				</svg>
+			</button>
 			<a
 				href="/contact"
-				class="inline-flex items-center justify-center bg-primary-green px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+				class="hidden items-center justify-center bg-primary-green px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark md:inline-flex"
 			>
 				Get in Touch
 			</a>
 		</div>
 	</div>
+	<nav
+		id="mobile-menu"
+		aria-label="Mobile navigation"
+		class="hidden border-t border-border bg-white md:hidden"
+	>
+		<div class="mx-auto flex max-w-7xl flex-col px-6 py-3">
+			{
+				links.map((link) => (
+					<a
+						href={link.href}
+						class="border-b border-border py-3 text-sm font-medium text-text last:border-0 hover:text-primary-green"
+					>
+						{link.label}
+					</a>
+				))
+			}
+		</div>
+	</nav>
 </header>
+
+<script is:inline>
+	(() => {
+		const initializeMobileMenu = () => {
+			const menuButton = document.getElementById("mobile-menu-button");
+			const mobileMenu = document.getElementById("mobile-menu");
+
+			if (!menuButton || !mobileMenu || menuButton.dataset.initialized === "true") return;
+			menuButton.dataset.initialized = "true";
+
+			menuButton.addEventListener("click", () => {
+				const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+				mobileMenu.classList.toggle("hidden");
+				menuButton.setAttribute("aria-expanded", String(!isExpanded));
+			});
+		};
+
+		document.addEventListener("astro:page-load", initializeMobileMenu);
+		initializeMobileMenu();
+	})();
+</script>

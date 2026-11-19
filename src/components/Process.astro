@@ -52,7 +52,7 @@ const steps = [
 					<li class="process-step" style={`transition-delay: ${index * 120}ms`}>
 						<div class="process-card border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#3A6931] md:p-7">
 							<svg
-								class="mb-5 size-7 text-primary-green"
+								class="mb-5 size-6 text-[#3A6931]"
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
@@ -78,8 +78,8 @@ const steps = [
 								)}
 								{step.icon === "deliver" && (
 									<>
-										<path d="M12 3.5c4.2 2.2 6.6 6 6.6 10.1L12 20l-6.6-6.4C5.4 9.5 7.8 5.7 12 3.5Z" />
-										<path d="m9.2 11.8 1.8 1.8 3.8-4M12 20v-4" />
+										<circle cx="12" cy="12" r="9" />
+										<path d="m8 12.5 2.5 2.5 5.5-6" />
 									</>
 								)}
 							</svg>
