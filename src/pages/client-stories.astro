@@ -81,10 +81,10 @@ const stories = [
 >
 	<section class="mx-auto max-w-7xl px-6 py-20 md:py-28">
 		<div class="max-w-3xl">
-			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green">
+			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
 				Client stories
 			</p>
-			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-primary-dark md:text-5xl">
+			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-primary-dark dark:text-dark-text md:text-5xl">
 				Digital work that moves organizations forward.
 			</h1>
 			<p class="mt-5 text-lg leading-8 text-text">
@@ -96,7 +96,7 @@ const stories = [
 		<div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 			{
 				stories.map((story) => (
-					<article class="group flex flex-col overflow-hidden rounded-t-md border border-border bg-white">
+					<article class="group flex flex-col overflow-hidden rounded-t-md border border-border bg-white dark:bg-dark-surface">
 						<div class="h-48 overflow-hidden border-b border-border">
 							<img
 								src={story.image}
@@ -107,31 +107,31 @@ const stories = [
 						</div>
 						<div class="flex flex-1 flex-col p-7 md:p-8">
 							<div>
-								<h2 class="text-2xl font-semibold tracking-tight text-primary-dark">
+								<h2 class="text-2xl font-semibold tracking-tight text-primary-dark dark:text-dark-text">
 									{story.client}
 								</h2>
 								<ul class="mt-4 flex flex-wrap gap-2" aria-label={`${story.client} services`}>
 									{story.services.map((service) => (
-										<li class="rounded-full border border-[#E5E3DC] bg-[#F7F6F2] px-3 py-1 text-xs text-[#2A4D24]">
+										<li class="rounded-full border border-[#E5E3DC] bg-[#F7F6F2] px-3 py-1 text-xs text-[#2A4D24] dark:border-dark-border dark:bg-dark-page dark:text-dark-text">
 											{service}
 										</li>
 									))}
 								</ul>
 								<dl class="mt-7 space-y-6">
 									<div>
-										<dt class="text-sm font-semibold text-primary-green">Client Profile</dt>
+										<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">Client Profile</dt>
 										<dd class="mt-2 leading-7 text-text">{story.profile}</dd>
 									</div>
 									<div>
-										<dt class="text-sm font-semibold text-primary-green">The Challenge</dt>
+										<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">The Challenge</dt>
 										<dd class="mt-2 leading-7 text-text">{story.challenge}</dd>
 									</div>
 									<div>
-										<dt class="text-sm font-semibold text-primary-green">What Waliya Did</dt>
+										<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">What Waliya Did</dt>
 										<dd class="mt-2 leading-7 text-text">{story.solution}</dd>
 									</div>
 									<div>
-										<dt class="text-sm font-semibold text-primary-green">The Result</dt>
+										<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">The Result</dt>
 										<dd class="mt-2 leading-7 text-text">{story.result}</dd>
 									</div>
 								</dl>
@@ -140,7 +140,7 @@ const stories = [
 								href={story.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="mt-8 inline-flex w-fit items-center gap-2 border-b border-primary-green pb-1 text-sm font-semibold text-primary-green transition-colors hover:text-primary-dark"
+								class="mt-8 inline-flex w-fit items-center gap-2 border-b border-primary-green pb-1 text-sm font-semibold text-primary-green transition-colors hover:text-primary-dark dark:border-dark-green dark:text-dark-green dark:hover:text-dark-text"
 							>
 								Visit Website
 								<span aria-hidden="true">↗</span>

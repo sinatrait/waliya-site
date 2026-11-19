@@ -34,10 +34,10 @@ const steps = [
 <section class="process-section bg-surface py-20 md:py-24">
 	<div class="mx-auto max-w-7xl px-6">
 		<div class="max-w-2xl">
-			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green">
+			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
 				How we work
 			</p>
-			<h2 class="mt-4 text-3xl font-semibold tracking-tight text-primary-dark md:text-4xl">
+			<h2 class="mt-4 text-3xl font-semibold tracking-tight text-primary-dark dark:text-dark-text md:text-4xl">
 				Our Approach
 			</h2>
 			<p class="mt-4 text-lg leading-8 text-text">
@@ -50,9 +50,9 @@ const steps = [
 			{
 				steps.map((step, index) => (
 					<li class="process-step" style={`transition-delay: ${index * 120}ms`}>
-						<div class="process-card border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#3A6931] md:p-7">
+						<div class="process-card border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#3A6931] dark:bg-dark-surface dark:hover:border-dark-green md:p-7">
 							<svg
-								class="mb-5 size-6 text-[#3A6931]"
+								class="mb-5 size-6 text-[#3A6931] dark:text-dark-green"
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
@@ -83,16 +83,16 @@ const steps = [
 									</>
 								)}
 							</svg>
-							<p class="text-sm font-semibold tracking-[0.14em] text-primary-green/70">
+							<p class="text-sm font-semibold tracking-[0.14em] text-primary-green dark:text-dark-green">
 								{step.number}
 							</p>
-							<h3 class="mt-2 text-xl font-semibold tracking-tight text-primary-dark">
+							<h3 class="mt-2 text-xl font-semibold tracking-tight text-primary-dark dark:text-dark-text">
 								{step.title}
 							</h3>
 							<p class="mt-3 leading-7 text-text">{step.description}</p>
 						</div>
 						{index < steps.length - 1 && (
-							<span class="process-arrow" aria-hidden="true">
+							<span class="process-arrow dark:text-dark-green" aria-hidden="true">
 								<svg
 									class="size-4"
 									viewBox="0 0 16 16"
@@ -141,6 +141,10 @@ const steps = [
 
 	.process-arrow {
 		display: none;
+	}
+
+	:global(.dark) .process-arrow {
+		color: var(--color-dark-green);
 	}
 
 	@media (min-width: 64rem) {

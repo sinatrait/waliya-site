@@ -1,14 +1,14 @@
-<section class="hero-grid relative isolate bg-[#F7F6F2]">
+<section class="hero-grid relative isolate bg-[#F7F6F2] dark:bg-dark-page">
 	<div class="mx-auto grid min-h-[80vh] max-w-7xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:py-24">
 		<div class="relative z-10">
 			<p
-				class="fade-up mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-primary-green"
+				class="fade-up mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green"
 				style="animation-delay: 100ms"
 			>
 				Waliya Enterprizes
 			</p>
 			<h1
-				class="fade-up max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight text-primary-dark md:text-7xl"
+				class="fade-up max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight text-primary-dark dark:text-dark-text md:text-7xl"
 				style="animation-delay: 300ms"
 			>
 				Digital Solutions &amp; Business Services That Move You Forward
@@ -29,7 +29,7 @@
 				</a>
 				<a
 					href="/services"
-					class="inline-flex items-center justify-center border border-primary-green px-6 py-3.5 text-sm font-semibold text-primary-green transition-colors hover:bg-primary-green hover:text-white"
+					class="inline-flex items-center justify-center border border-primary-green px-6 py-3.5 text-sm font-semibold text-primary-green transition-colors hover:bg-primary-green hover:text-white dark:border-dark-green dark:text-dark-green dark:hover:bg-dark-green dark:hover:text-dark-page"
 				>
 					Explore Services
 				</a>
@@ -37,7 +37,7 @@
 		</div>
 
 		<div class="fade-up relative z-10 md:ml-4" style="animation-delay: 500ms">
-			<div class="hero-image-frame relative aspect-[4/5] overflow-hidden bg-[#E5E3DC] md:aspect-[5/6]">
+			<div class="hero-image-frame relative aspect-[4/5] overflow-hidden bg-[#E5E3DC] dark:bg-dark-border md:aspect-[5/6]">
 				<img
 					class="hero-image h-full w-full object-cover"
 					src="/images/hero.jpg"
@@ -45,8 +45,8 @@
 					fetchpriority="high"
 				/>
 			</div>
-			<div class="absolute -bottom-5 left-4 flex items-center gap-3 border border-[#E5E3DC] bg-white px-5 py-4 shadow-lg md:-left-10 md:bottom-10">
-				<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#F7F6F2] text-primary-green">
+			<div class="absolute -bottom-5 left-4 flex items-center gap-3 border border-[#E5E3DC] bg-white px-5 py-4 shadow-lg dark:border-dark-border dark:bg-dark-surface md:-left-10 md:bottom-10">
+				<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#F7F6F2] text-primary-green dark:bg-dark-page dark:text-dark-green">
 					<svg
 						class="size-5"
 						viewBox="0 0 24 24"
@@ -60,7 +60,7 @@
 						<path d="m5 12 4 4L19 6"></path>
 					</svg>
 				</span>
-				<span class="text-sm font-semibold text-primary-dark">Trusted by 20+ businesses</span>
+				<span class="text-sm font-semibold text-primary-dark dark:text-dark-text">Trusted by 20+ businesses</span>
 			</div>
 		</div>
 	</div>
@@ -72,6 +72,12 @@
 			linear-gradient(rgba(42, 77, 36, 0.045) 1px, transparent 1px),
 			linear-gradient(90deg, rgba(42, 77, 36, 0.045) 1px, transparent 1px);
 		background-size: 44px 44px;
+	}
+
+	:global(.dark) .hero-grid {
+		background-image:
+			linear-gradient(rgba(249, 250, 251, 0.035) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(249, 250, 251, 0.035) 1px, transparent 1px);
 	}
 
 	.hero-image {

@@ -10,11 +10,11 @@ const links = [
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
-<header class="sticky top-0 z-50 border-b border-border bg-white">
+<header class="sticky top-0 z-50 border-b border-border bg-white dark:bg-dark-surface">
 	<div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-5">
 		<a
 			href="/"
-			class="shrink-0 text-lg font-bold tracking-tight text-primary-dark"
+			class="shrink-0 text-lg font-bold tracking-tight text-primary-dark dark:text-dark-text"
 			aria-label="Waliya Enterprizes home"
 		>
 			Waliya Enterprizes
@@ -26,9 +26,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 					<a
 						href={link.href}
 						class:list={[
-							"border-b-2 py-1 text-sm transition-colors hover:text-primary-green",
+							"border-b-2 py-1 text-sm transition-colors hover:text-primary-green dark:hover:text-dark-green",
 							link.href.replace(/\/$/, "") === currentPath
-								? "border-[#3A6931] font-semibold text-[#3A6931]"
+								? "border-[#3A6931] font-semibold text-[#3A6931] dark:border-dark-green dark:text-dark-green"
 								: "border-transparent font-medium text-text",
 						]}
 						aria-current={link.href.replace(/\/$/, "") === currentPath ? "page" : undefined}
@@ -37,6 +37,39 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 					</a>
 				))
 			}
+			<button
+				type="button"
+				class="theme-toggle inline-flex size-10 items-center justify-center text-text transition-colors hover:bg-surface dark:hover:bg-dark-border"
+				data-theme-toggle
+				aria-label="Switch to dark mode"
+				aria-pressed="false"
+			>
+				<svg
+					class="size-5 dark:hidden"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path>
+				</svg>
+				<svg
+					class="hidden size-5 dark:block"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<circle cx="12" cy="12" r="4"></circle>
+					<path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+				</svg>
+			</button>
 		</nav>
 
 		<div class="flex shrink-0 items-center gap-5">
@@ -86,7 +119,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 	<nav
 		id="mobile-menu"
 		aria-label="Mobile navigation"
-		class="hidden border-t border-border bg-white md:hidden"
+		class="hidden border-t border-border bg-white dark:bg-dark-surface md:hidden"
 	>
 		<div class="mx-auto flex max-w-7xl flex-col px-6 py-3">
 			{
@@ -94,9 +127,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 					<a
 						href={link.href}
 						class:list={[
-							"border-b border-border py-3 text-sm last:border-0 hover:text-primary-green",
+							"border-b border-border py-3 text-sm last:border-0 hover:text-primary-green dark:hover:text-dark-green",
 							link.href.replace(/\/$/, "") === currentPath
-								? "bg-surface font-bold text-primary-green"
+								? "bg-surface font-bold text-primary-green dark:bg-dark-page dark:text-dark-green"
 								: "font-medium text-text",
 						]}
 						aria-current={link.href.replace(/\/$/, "") === currentPath ? "page" : undefined}
@@ -105,12 +138,68 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 					</a>
 				))
 			}
+			<button
+				type="button"
+				class="theme-toggle mt-3 inline-flex w-fit items-center gap-3 px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-surface dark:hover:bg-dark-border"
+				data-theme-toggle
+				aria-label="Switch to dark mode"
+				aria-pressed="false"
+			>
+				<svg
+					class="size-5 dark:hidden"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path>
+				</svg>
+				<svg
+					class="hidden size-5 dark:block"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<circle cx="12" cy="12" r="4"></circle>
+					<path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+				</svg>
+				<span>Theme</span>
+			</button>
 		</div>
 	</nav>
 </header>
 
 <script is:inline>
 	(() => {
+		const initializeThemeToggle = () => {
+			const toggles = document.querySelectorAll("[data-theme-toggle]");
+			const isDark = document.documentElement.classList.contains("dark");
+
+			toggles.forEach((toggle) => {
+				toggle.setAttribute("aria-pressed", String(isDark));
+				toggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
+				if (toggle.dataset.initialized === "true") return;
+				toggle.dataset.initialized = "true";
+
+				toggle.addEventListener("click", () => {
+					const nextIsDark = !document.documentElement.classList.contains("dark");
+					document.documentElement.classList.toggle("dark", nextIsDark);
+					localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+					toggles.forEach((button) => {
+						button.setAttribute("aria-pressed", String(nextIsDark));
+						button.setAttribute("aria-label", `Switch to ${nextIsDark ? "light" : "dark"} mode`);
+					});
+				});
+			});
+		};
+
 		const initializeMobileMenu = () => {
 			const menuButton = document.getElementById("mobile-menu-button");
 			const mobileMenu = document.getElementById("mobile-menu");
@@ -140,7 +229,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 			});
 		};
 
-		document.addEventListener("astro:page-load", initializeMobileMenu);
+		document.addEventListener("astro:page-load", () => {
+			initializeMobileMenu();
+			initializeThemeToggle();
+		});
 		initializeMobileMenu();
+		initializeThemeToggle();
 	})();
 </script>

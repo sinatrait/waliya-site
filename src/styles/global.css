@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
 	--color-primary-green: #3A6931;
 	--color-primary-dark: #2A4D24;
@@ -8,7 +10,19 @@
 	--color-surface: #F7F6F2;
 	--color-border: #E5E3DC;
 	--color-text: #1F2421;
+	--color-dark-page: #111827;
+	--color-dark-surface: #1F2937;
+	--color-dark-border: #374151;
+	--color-dark-text: #F9FAFB;
+	--color-dark-green: #75B86A;
 	--font-sans: "Inter", sans-serif;
+}
+
+html.dark {
+	color-scheme: dark;
+	--color-surface: var(--color-dark-surface);
+	--color-border: var(--color-dark-border);
+	--color-text: var(--color-dark-text);
 }
 
 @layer base {
@@ -17,4 +31,30 @@
 		color: var(--color-text);
 		font-family: var(--font-sans);
 	}
+}
+
+html.dark body {
+	background-color: var(--color-dark-page);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 3px solid var(--color-primary-dark);
+	outline-offset: 3px;
+}
+
+.bg-primary-dark a:focus-visible,
+.bg-primary-dark button:focus-visible {
+	outline-color: #fff;
+}
+
+html.dark a:focus-visible,
+html.dark button:focus-visible,
+html.dark input:focus-visible,
+html.dark textarea:focus-visible,
+html.dark select:focus-visible {
+	outline-color: var(--color-dark-text);
 }
