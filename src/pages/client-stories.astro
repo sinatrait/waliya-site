@@ -6,6 +6,12 @@ const stories = [
 		client: "The United Trust",
 		image: "/images/united-trust.jpg",
 		imageAlt: "The United Trust homepage",
+		services: [
+			"Website Design & Development",
+			"Website Maintenance",
+			"Graphic Design & Branding",
+			"Digital Marketing",
+		],
 		profile:
 			"A non-profit organization with more than 31 years of service, focused on education, healthcare, and community welfare.",
 		challenge:
@@ -20,6 +26,12 @@ const stories = [
 		client: "The United Group",
 		image: "/images/united-group.jpg",
 		imageAlt: "The United Group homepage",
+		services: [
+			"Website Design & Development",
+			"Website Maintenance",
+			"Graphic Design & Branding",
+			"Digital Marketing",
+		],
 		profile:
 			"A diversified corporate group operating in finance, investment, infrastructure, and general trading.",
 		challenge:
@@ -34,6 +46,7 @@ const stories = [
 		client: "Soulax",
 		image: "/images/soulax.jpg",
 		imageAlt: "Soulax homepage",
+		services: ["Website Design & Development", "Graphic Design & Branding"],
 		profile:
 			"A deep-tech company specializing in Agentic AI, IoT, and Big Data for manufacturing, logistics, and supply chain.",
 		challenge:
@@ -48,6 +61,7 @@ const stories = [
 		client: "Aleena Mansur",
 		image: "/images/aleena-mansur.jpg",
 		imageAlt: "Aleena Mansur homepage",
+		services: ["Website Design & Development", "Website Maintenance"],
 		profile:
 			"A professional Supercross racer and trailblazer in Indian motorsport, competing at national and international levels.",
 		challenge:
@@ -96,6 +110,13 @@ const stories = [
 								<h2 class="text-2xl font-semibold tracking-tight text-primary-dark">
 									{story.client}
 								</h2>
+								<ul class="mt-4 flex flex-wrap gap-2" aria-label={`${story.client} services`}>
+									{story.services.map((service) => (
+										<li class="rounded-full border border-[#E5E3DC] bg-[#F7F6F2] px-3 py-1 text-xs text-[#2A4D24]">
+											{service}
+										</li>
+									))}
+								</ul>
 								<dl class="mt-7 space-y-6">
 									<div>
 										<dt class="text-sm font-semibold text-primary-green">Client Profile</dt>

@@ -29,7 +29,7 @@ const services = [
 ];
 ---
 
-<section class="bg-white py-20 md:py-24">
+<section class="bg-[linear-gradient(180deg,#F7F6F2_0%,#FFFFFF_100%)] py-20 md:py-24">
 	<div class="mx-auto max-w-7xl px-6">
 		<div class="max-w-2xl">
 			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green">
@@ -43,8 +43,14 @@ const services = [
 			</p>
 		</div>
 
-		<div class="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">
-			{services.map((service) => <ServiceCard {...service} />)}
+		<div class="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-3">
+			{services.map((service, index) => (
+				<ServiceCard
+					{...service}
+					layout={index === 0 || index === 3 ? "wide" : "standard"}
+					variant={index === 0 ? "featured" : index === 3 ? "surface" : "standard"}
+				/>
+			))}
 		</div>
 	</div>
 </section>

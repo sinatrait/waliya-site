@@ -1,34 +1,26 @@
-<section
-	class="relative isolate flex min-h-[80vh] items-center bg-cover bg-center bg-no-repeat md:min-h-[600px]"
-	style="background-image: url('/images/hero.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat"
->
-	<div
-		class="absolute inset-0 z-0 bg-primary-dark/70"
-		style="position: absolute; inset: 0; z-index: 0; background-color: rgba(42, 77, 36, 0.7)"
-		aria-hidden="true"
-	></div>
-	<div
-		class="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 md:py-32"
-		style="position: relative; z-index: 1"
-	>
-		<div class="max-w-4xl">
+<section class="hero-grid relative isolate bg-[#F7F6F2]">
+	<div class="mx-auto grid min-h-[80vh] max-w-7xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:py-24">
+		<div class="relative z-10">
 			<p
-				class="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-white/80"
-				style="color: rgba(255, 255, 255, 0.85)"
+				class="fade-up mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-primary-green"
+				style="animation-delay: 100ms"
 			>
 				Waliya Enterprizes
 			</p>
 			<h1
-				class="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl"
-				style="color: #fff"
+				class="fade-up max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight text-primary-dark md:text-7xl"
+				style="animation-delay: 300ms"
 			>
 				Digital Solutions &amp; Business Services That Move You Forward
 			</h1>
-			<p class="mt-7 max-w-2xl text-lg leading-8 text-white/90" style="color: rgba(255, 255, 255, 0.9)">
+			<p
+				class="fade-up mt-7 max-w-xl text-lg leading-8 text-text"
+				style="animation-delay: 500ms"
+			>
 				We help startups, small businesses, and individuals establish their digital presence and
 				access practical business support.
 			</p>
-			<div class="mt-9 flex flex-wrap gap-4">
+			<div class="fade-up mt-9 flex flex-wrap gap-4" style="animation-delay: 700ms">
 				<a
 					href="/contact"
 					class="inline-flex items-center justify-center bg-[#3A6931] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
@@ -37,11 +29,87 @@
 				</a>
 				<a
 					href="/services"
-					class="inline-flex items-center justify-center border border-white px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-primary-dark"
+					class="inline-flex items-center justify-center border border-primary-green px-6 py-3.5 text-sm font-semibold text-primary-green transition-colors hover:bg-primary-green hover:text-white"
 				>
 					Explore Services
 				</a>
 			</div>
 		</div>
+
+		<div class="fade-up relative z-10 md:ml-4" style="animation-delay: 500ms">
+			<div class="hero-image-frame relative aspect-[4/5] overflow-hidden bg-[#E5E3DC] md:aspect-[5/6]">
+				<img
+					class="hero-image h-full w-full object-cover"
+					src="/images/hero.jpg"
+					alt="Waliya Enterprizes helping businesses move forward"
+					fetchpriority="high"
+				/>
+			</div>
+			<div class="absolute -bottom-5 left-4 flex items-center gap-3 border border-[#E5E3DC] bg-white px-5 py-4 shadow-lg md:-left-10 md:bottom-10">
+				<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#F7F6F2] text-primary-green">
+					<svg
+						class="size-5"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<path d="m5 12 4 4L19 6"></path>
+					</svg>
+				</span>
+				<span class="text-sm font-semibold text-primary-dark">Trusted by 20+ businesses</span>
+			</div>
+		</div>
 	</div>
 </section>
+
+<style>
+	.hero-grid {
+		background-image:
+			linear-gradient(rgba(42, 77, 36, 0.045) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(42, 77, 36, 0.045) 1px, transparent 1px);
+		background-size: 44px 44px;
+	}
+
+	.hero-image {
+		animation: hero-ken-burns 20s ease-out forwards;
+	}
+
+	.fade-up {
+		opacity: 0;
+		transform: translateY(20px);
+		animation: hero-fade-up 800ms ease-out both;
+	}
+
+	@keyframes hero-ken-burns {
+		from {
+			transform: scale(1);
+		}
+
+		to {
+			transform: scale(1.05);
+		}
+	}
+
+	@keyframes hero-fade-up {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-image,
+		.fade-up {
+			animation: none;
+		}
+
+		.fade-up {
+			opacity: 1;
+			transform: none;
+		}
+	}
+</style>
