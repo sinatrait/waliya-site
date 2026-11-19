@@ -6,6 +6,8 @@ const links = [
 	{ label: "Client Stories", href: "/client-stories" },
 	{ label: "Contact", href: "/contact" },
 ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-white">
@@ -23,7 +25,13 @@ const links = [
 				links.map((link) => (
 					<a
 						href={link.href}
-						class="text-sm font-medium text-text transition-colors hover:text-primary-green"
+						class:list={[
+							"border-b-2 py-1 text-sm transition-colors hover:text-primary-green",
+							link.href.replace(/\/$/, "") === currentPath
+								? "border-[#3A6931] font-semibold text-[#3A6931]"
+								: "border-transparent font-medium text-text",
+						]}
+						aria-current={link.href.replace(/\/$/, "") === currentPath ? "page" : undefined}
 					>
 						{link.label}
 					</a>
@@ -35,21 +43,36 @@ const links = [
 			<button
 				id="mobile-menu-button"
 				type="button"
-				class="inline-flex items-center gap-2 text-sm font-medium text-text md:hidden"
+				class="inline-flex items-center text-text md:hidden"
 				aria-controls="mobile-menu"
 				aria-expanded="false"
+				aria-label="Open navigation menu"
 			>
-				<span>Menu</span>
 				<svg
-					class="size-5"
+					id="hamburger-icon"
+					class="size-6"
 					viewBox="0 0 24 24"
 					fill="none"
 					stroke="currentColor"
 					stroke-width="1.5"
 					stroke-linecap="round"
+					stroke-linejoin="round"
 					aria-hidden="true"
 				>
 					<path d="M4 7h16M4 12h16M4 17h16"></path>
+				</svg>
+				<svg
+					id="close-icon"
+					class="hidden size-6"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path d="m6 6 12 12M18 6 6 18"></path>
 				</svg>
 			</button>
 			<a
@@ -70,7 +93,13 @@ const links = [
 				links.map((link) => (
 					<a
 						href={link.href}
-						class="border-b border-border py-3 text-sm font-medium text-text last:border-0 hover:text-primary-green"
+						class:list={[
+							"border-b border-border py-3 text-sm last:border-0 hover:text-primary-green",
+							link.href.replace(/\/$/, "") === currentPath
+								? "bg-surface font-bold text-primary-green"
+								: "font-medium text-text",
+						]}
+						aria-current={link.href.replace(/\/$/, "") === currentPath ? "page" : undefined}
 					>
 						{link.label}
 					</a>
@@ -85,14 +114,29 @@ const links = [
 		const initializeMobileMenu = () => {
 			const menuButton = document.getElementById("mobile-menu-button");
 			const mobileMenu = document.getElementById("mobile-menu");
+			const hamburgerIcon = document.getElementById("hamburger-icon");
+			const closeIcon = document.getElementById("close-icon");
 
-			if (!menuButton || !mobileMenu || menuButton.dataset.initialized === "true") return;
+			if (
+				!menuButton ||
+				!mobileMenu ||
+				!hamburgerIcon ||
+				!closeIcon ||
+				menuButton.dataset.initialized === "true"
+			)
+				return;
 			menuButton.dataset.initialized = "true";
 
 			menuButton.addEventListener("click", () => {
 				const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
 				mobileMenu.classList.toggle("hidden");
+				hamburgerIcon.classList.toggle("hidden");
+				closeIcon.classList.toggle("hidden");
 				menuButton.setAttribute("aria-expanded", String(!isExpanded));
+				menuButton.setAttribute(
+					"aria-label",
+					isExpanded ? "Open navigation menu" : "Close navigation menu",
+				);
 			});
 		};
 
