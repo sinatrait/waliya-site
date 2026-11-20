@@ -1,49 +1,111 @@
-<section class="hero-grid relative isolate bg-[#F7F6F2] dark:bg-dark-page">
+---
+const slides = [
+	{
+		id: "digital-solutions",
+		image: "/images/hero.jpg",
+		headline: "Digital Solutions & Business Services That Move You Forward",
+		subheadline:
+			"We help startups, small businesses, and individuals establish their digital presence and access practical business support.",
+	},
+	{
+		id: "websites-that-drive-growth",
+		image: "/images/Unsplash/img2.jpg",
+		headline: "Websites That Drive Growth.",
+		subheadline:
+			"We design and develop high-performance digital storefronts that convert visitors into loyal customers.",
+	},
+	{
+		id: "brands-that-stand-out",
+		image: "/images/Unsplash/img3.jpg",
+		headline: "Brands That Stand Out.",
+		subheadline:
+			"From logos to full visual identities, we craft memorable designs that make your business instantly recognizable.",
+	},
+	{
+		id: "strategies-that-deliver",
+		image: "/images/Unsplash/img4.jpg",
+		headline: "Strategies That Deliver.",
+		subheadline:
+			"Data-driven digital marketing campaigns that increase your visibility and bring in qualified leads.",
+	},
+];
+---
+
+<section
+	id="hero-carousel"
+	class="hero-grid relative isolate bg-[#F7F6F2] dark:bg-dark-page"
+	role="region"
+	aria-roledescription="carousel"
+	aria-label="Featured services"
+>
 	<div class="mx-auto grid min-h-[80vh] max-w-7xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:py-24">
-		<div class="relative z-10">
-			<p
-				class="fade-up mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green"
-				style="animation-delay: 100ms"
-			>
-				Waliya Enterprizes
-			</p>
-			<h1
-				class="fade-up max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight text-primary-dark dark:text-dark-text md:text-7xl"
-				style="animation-delay: 300ms"
-			>
-				Digital Solutions &amp; Business Services That Move You Forward
-			</h1>
-			<p
-				class="fade-up mt-7 max-w-xl text-lg leading-8 text-text"
-				style="animation-delay: 500ms"
-			>
-				We help startups, small businesses, and individuals establish their digital presence and
-				access practical business support.
-			</p>
-			<div class="fade-up mt-9 flex flex-wrap gap-4" style="animation-delay: 700ms">
-				<a
-					href="/contact"
-					class="inline-flex items-center justify-center bg-[#3A6931] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+		<div class="fade-up relative z-10 min-h-[560px] md:ml-4 md:min-h-[520px]" style="animation-delay: 100ms">
+			{slides.map((slide, index) => (
+				<div
+					id={`hero-copy-${slide.id}`}
+					class:list={[
+						"hero-copy-slide absolute inset-0 flex flex-col justify-center transition-opacity duration-1000 ease-in-out",
+						index === 0 ? "opacity-100" : "opacity-0",
+					]}
+					aria-hidden={index === 0 ? "false" : "true"}
+					data-active={index === 0 ? "true" : "false"}
+					inert={index !== 0}
 				>
-					Start a Conversation
-				</a>
-				<a
-					href="/services"
-					class="inline-flex items-center justify-center border border-primary-green px-6 py-3.5 text-sm font-semibold text-primary-green transition-colors hover:bg-primary-green hover:text-white dark:border-dark-green dark:text-dark-green dark:hover:bg-dark-green dark:hover:text-dark-page"
-				>
-					Explore Services
-				</a>
-			</div>
+					<p class="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
+						Waliya Enterprizes
+					</p>
+					<h1 class="max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight text-primary-dark dark:text-dark-text md:text-7xl">
+						{slide.headline}
+					</h1>
+					<p class="mt-7 max-w-xl text-lg leading-8 text-text">
+						{slide.subheadline}
+					</p>
+					<div class="mt-9 flex flex-wrap gap-4">
+						<a
+							href="/contact"
+							class="inline-flex items-center justify-center bg-[#3A6931] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+						>
+							Start a Conversation
+						</a>
+						<a
+							href="/services"
+							class="inline-flex items-center justify-center border border-primary-green px-6 py-3.5 text-sm font-semibold text-primary-green transition-colors hover:bg-primary-green hover:text-white dark:border-dark-green dark:text-dark-green dark:hover:bg-dark-green dark:hover:text-dark-page"
+						>
+							Explore Services
+						</a>
+					</div>
+				</div>
+			))}
 		</div>
 
 		<div class="fade-up relative z-10 md:ml-4" style="animation-delay: 500ms">
 			<div class="hero-image-frame relative aspect-[4/5] overflow-hidden bg-[#E5E3DC] dark:bg-dark-border md:aspect-[5/6]">
-				<img
-					class="hero-image h-full w-full object-cover"
-					src="/images/hero.jpg"
-					alt="Waliya Enterprizes helping businesses move forward"
-					fetchpriority="high"
-				/>
+				{slides.map((slide, index) => (
+					<div
+						class:list={[
+							"hero-image-slide absolute inset-0 transition-opacity duration-1000 ease-in-out",
+							index === 0 ? "opacity-100" : "opacity-0",
+						]}
+						aria-hidden="true"
+						data-active={index === 0 ? "true" : "false"}
+					>
+						<img
+							class="hero-image h-full w-full object-cover"
+							src={slide.image}
+							alt=""
+							fetchpriority={index === 0 ? "high" : "auto"}
+							loading={index === 0 ? "eager" : "lazy"}
+						/>
+					</div>
+				))}
+				<button
+					type="button"
+					class="hero-rotation-toggle absolute bottom-6 right-6 z-10 border border-[#E5E3DC] bg-white/95 px-3 py-2 text-xs font-semibold text-primary-dark transition-[opacity,color,background-color] duration-200 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-green dark:border-dark-border dark:bg-dark-surface/95 dark:text-dark-text dark:hover:bg-dark-surface"
+					aria-controls="hero-carousel"
+					aria-pressed="false"
+				>
+					Pause slideshow
+				</button>
 				<div class="absolute bottom-4 left-4 z-10 flex max-w-[calc(100%-2rem)] items-center gap-2 border border-[#E5E3DC] bg-white/95 px-3 py-3 shadow-lg backdrop-blur-sm dark:border-dark-border dark:bg-dark-surface/95 sm:bottom-6 sm:left-6 sm:gap-3 sm:px-5">
 					<span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#F7F6F2] text-primary-green dark:bg-dark-page dark:text-dark-green sm:size-9">
 						<svg
@@ -68,6 +130,90 @@
 	</div>
 </section>
 
+<script>
+	let cleanupCarousel: (() => void) | undefined;
+
+	function initializeHeroCarousel() {
+		cleanupCarousel?.();
+
+		const hero = document.querySelector(".hero-grid");
+		if (!hero) return;
+
+		const copySlides = Array.from(hero.querySelectorAll<HTMLElement>(".hero-copy-slide"));
+		const imageSlides = Array.from(hero.querySelectorAll<HTMLElement>(".hero-image-slide"));
+		const toggle = hero.querySelector<HTMLButtonElement>(".hero-rotation-toggle");
+
+		if (copySlides.length !== imageSlides.length || copySlides.length < 2 || !toggle) {
+			throw new Error("Hero carousel requires matching text and image slides, and a rotation toggle.");
+		}
+
+		let activeIndex = 0;
+		let intervalId: number | undefined;
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+		let manuallyPaused = prefersReducedMotion.matches;
+
+		const showSlide = (nextIndex: number) => {
+			copySlides[activeIndex].classList.replace("opacity-100", "opacity-0");
+			copySlides[activeIndex].setAttribute("aria-hidden", "true");
+			copySlides[activeIndex].dataset.active = "false";
+			copySlides[activeIndex].inert = true;
+			imageSlides[activeIndex].classList.replace("opacity-100", "opacity-0");
+			imageSlides[activeIndex].dataset.active = "false";
+
+			activeIndex = nextIndex;
+			copySlides[activeIndex].classList.replace("opacity-0", "opacity-100");
+			copySlides[activeIndex].setAttribute("aria-hidden", "false");
+			copySlides[activeIndex].dataset.active = "true";
+			copySlides[activeIndex].inert = false;
+			imageSlides[activeIndex].classList.replace("opacity-0", "opacity-100");
+			imageSlides[activeIndex].dataset.active = "true";
+		};
+
+		const stopRotation = () => {
+			if (intervalId !== undefined) {
+				window.clearInterval(intervalId);
+				intervalId = undefined;
+			}
+		};
+
+		const startRotation = () => {
+			stopRotation();
+			intervalId = window.setInterval(() => {
+				showSlide((activeIndex + 1) % copySlides.length);
+			}, 10000);
+		};
+
+		const syncRotation = () => {
+			if (manuallyPaused) {
+				stopRotation();
+			} else if (intervalId === undefined) {
+				startRotation();
+			}
+
+			toggle.textContent = manuallyPaused ? "Play slideshow" : "Pause slideshow";
+			toggle.setAttribute("aria-pressed", String(manuallyPaused));
+		};
+
+		const onToggle = () => {
+			manuallyPaused = !manuallyPaused;
+			syncRotation();
+		};
+
+		toggle.addEventListener("click", onToggle);
+		syncRotation();
+
+		cleanupCarousel = () => {
+			stopRotation();
+			toggle.removeEventListener("click", onToggle);
+			cleanupCarousel = undefined;
+		};
+	}
+
+	document.addEventListener("astro:page-load", initializeHeroCarousel);
+	document.addEventListener("astro:before-swap", () => cleanupCarousel?.());
+	initializeHeroCarousel();
+</script>
+
 <style>
 	.hero-grid {
 		background-image:
@@ -84,6 +230,30 @@
 
 	.hero-image {
 		animation: hero-ken-burns 20s ease-out forwards;
+	}
+
+	.hero-copy-slide[data-active="false"],
+	.hero-image-slide[data-active="false"] {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.hero-rotation-toggle {
+		bottom: 1.5rem;
+		right: 1.5rem;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.hero-rotation-toggle:not(:focus-visible) {
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		.hero-image-frame:hover .hero-rotation-toggle,
+		.hero-image-frame:focus-within .hero-rotation-toggle {
+			opacity: 1;
+			pointer-events: auto;
+		}
 	}
 
 	.fade-up {
@@ -113,6 +283,11 @@
 		.hero-image,
 		.fade-up {
 			animation: none;
+		}
+
+		.hero-copy-slide,
+		.hero-image-slide {
+			transition: none;
 		}
 
 		.fade-up {
