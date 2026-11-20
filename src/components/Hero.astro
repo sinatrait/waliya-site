@@ -104,7 +104,7 @@ const slides = [
 					aria-controls="hero-carousel"
 					aria-pressed="false"
 				>
-					Pause slideshow
+					Pause
 				</button>
 				<div class="absolute bottom-4 left-4 z-10 flex max-w-[calc(100%-2rem)] items-center gap-2 border border-[#E5E3DC] bg-white/95 px-3 py-3 shadow-lg backdrop-blur-sm dark:border-dark-border dark:bg-dark-surface/95 sm:bottom-6 sm:left-6 sm:gap-3 sm:px-5">
 					<span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#F7F6F2] text-primary-green dark:bg-dark-page dark:text-dark-green sm:size-9">
@@ -190,7 +190,7 @@ const slides = [
 				startRotation();
 			}
 
-			toggle.textContent = manuallyPaused ? "Play slideshow" : "Pause slideshow";
+			toggle.textContent = manuallyPaused ? "Play" : "Pause";
 			toggle.setAttribute("aria-pressed", String(manuallyPaused));
 		};
 
