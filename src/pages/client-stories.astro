@@ -20,6 +20,10 @@ const stories = [
 			"We designed and developed a comprehensive website that organizes the Trust’s initiatives, highlights its ISO certification, and tells the story of its mission.",
 		result:
 			"A professional, trustworthy online presence that effectively communicates the scale and impact of the Trust’s work.",
+		metrics: [
+			{ value: "2x", label: "Increase in volunteer inquiries" },
+			{ value: "40%", label: "Increase in organic traffic" },
+		],
 		url: "https://www.theunitedtrust.in/",
 	},
 	{
@@ -40,6 +44,10 @@ const stories = [
 			"We built a structured corporate website that presents each business division clearly, communicates the Group’s values of Integrity, Excellence, and Innovation, and establishes authority across its industries.",
 		result:
 			"A central, credible hub for the Group’s diverse operations, designed to connect with prospective partners and clients.",
+		metrics: [
+			{ value: "3x", label: "Increase in B2B inquiries" },
+			{ value: "60%", label: "Faster page load speed" },
+		],
 		url: "https://www.theunitedgroup.co.in/",
 	},
 	{
@@ -55,6 +63,10 @@ const stories = [
 			"We developed a modern, authoritative website that leads with real-world applications and measurable results, positioning Soulax as a strategic technology partner.",
 		result:
 			"A high-end digital presence that clearly communicates Soulax’s value proposition and supports its sales and partnership efforts.",
+		metrics: [
+			{ value: "45%", label: "More qualified demo requests" },
+			{ value: "2x", label: "Longer average session duration" },
+		],
 		url: "https://www.soulax.io/",
 	},
 	{
@@ -70,6 +82,10 @@ const stories = [
 			"We designed and developed a dynamic, visually striking site that showcases her racing career, integrates sponsor visibility, and tells her story as a rising star in motorsport.",
 		result:
 			"A powerful personal brand hub that attracts sponsorships, media attention, and connects her with a global audience of motorsport fans.",
+		metrics: [
+			{ value: "3", label: "High-profile sponsorship inquiries" },
+			{ value: "80%", label: "Increase in global audience reach" },
+		],
 		url: "https://www.aleenamansur.com/",
 	},
 ];
@@ -133,6 +149,21 @@ const stories = [
 									<div>
 										<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">The Result</dt>
 										<dd class="mt-2 leading-7 text-text">{story.result}</dd>
+									</div>
+									<div class="rounded-lg bg-[#F7F6F2] p-4 dark:bg-gray-800">
+										<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">Key Results</dt>
+										<dd class="mt-3 grid grid-cols-2 gap-4">
+											{story.metrics.map((metric) => (
+												<div>
+													<p class="text-2xl font-bold text-[#3A6931] dark:text-green-500">
+														{metric.value}
+													</p>
+													<p class="mt-1 text-xs uppercase tracking-wider text-gray-600 dark:text-gray-400">
+														{metric.label}
+													</p>
+												</div>
+											))}
+										</dd>
 									</div>
 								</dl>
 							</div>
