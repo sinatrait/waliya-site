@@ -2,12 +2,22 @@
 interface Props {
 	title: string;
 	description: string;
+	bullets?: string[];
+	showBullets?: boolean;
 	icon: "website" | "maintenance" | "branding" | "marketing";
 	layout?: "wide" | "standard";
 	variant?: "featured" | "surface" | "standard";
 }
 
-const { title, description, icon, layout = "standard", variant = "standard" } = Astro.props;
+const {
+	title,
+	description,
+	bullets = [],
+	showBullets = true,
+	icon,
+	layout = "standard",
+	variant = "standard",
+} = Astro.props;
 
 const cardStyles = {
 	featured: {
@@ -15,18 +25,21 @@ const cardStyles = {
 		icon: "text-white/80",
 		title: "text-white",
 		description: "text-white/80",
+		bullets: "text-white",
 	},
 	surface: {
 		card: "border-border bg-[#F7F6F2] dark:bg-dark-surface",
 		icon: "text-primary-green dark:text-dark-green",
 		title: "text-primary-dark dark:text-dark-text",
 		description: "text-text",
+		bullets: "text-text dark:text-dark-text",
 	},
 	standard: {
 		card: "border-border bg-white dark:bg-dark-surface",
 		icon: "text-primary-green dark:text-dark-green",
 		title: "text-primary-dark dark:text-dark-text",
 		description: "text-text",
+		bullets: "text-text dark:text-dark-text",
 	},
 };
 
@@ -76,5 +89,10 @@ const styles = cardStyles[variant];
 		)}
 	</svg>
 	<h3 class:list={["font-semibold tracking-tight", layout === "wide" && variant === "featured" ? "text-3xl md:text-4xl" : "text-xl", styles.title]}>{title}</h3>
-	<p class:list={["mt-3 leading-7", styles.description]}>{description}</p>
+	<p class:list={["mt-3 leading-7", layout === "standard" ? "text-sm" : "text-base", styles.description]}>{description}</p>
+	{showBullets && bullets.length > 0 && (
+		<ul class:list={["mt-4 list-disc space-y-1 pl-5 text-sm opacity-80", styles.bullets]}>
+			{bullets.map((bullet) => <li>{bullet}</li>)}
+		</ul>
+	)}
 </article>

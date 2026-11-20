@@ -6,25 +6,25 @@ const services = [
 		title: "Website Design & Development",
 		icon: "website",
 		description:
-			"Professional, responsive websites that give your business a clear and credible digital presence.",
+			"Custom-built, responsive websites that act as the digital storefront for your business.",
 	},
 	{
 		title: "Website Maintenance",
 		icon: "maintenance",
 		description:
-			"Ongoing updates and practical support to keep your website current, reliable, and working as intended.",
+			"Ongoing security, updates, and support to keep your digital presence reliable.",
 	},
 	{
 		title: "Graphic Design & Branding",
 		icon: "branding",
 		description:
-			"Thoughtful visual identities and design materials that help your business communicate with consistency.",
+			"Logo creation and visual identities that ensure your brand looks professional everywhere.",
 	},
 	{
 		title: "Digital Marketing",
 		icon: "marketing",
 		description:
-			"Focused digital campaigns and channel support to help you reach and engage the right audience.",
+			"Data-driven strategies to increase your visibility and drive qualified traffic to your site.",
 	},
 ];
 ---
@@ -47,10 +47,19 @@ const services = [
 			{services.map((service, index) => (
 				<ServiceCard
 					{...service}
+					showBullets={false}
 					layout={index === 0 || index === 3 ? "wide" : "standard"}
 					variant={index === 0 ? "featured" : index === 3 ? "surface" : "standard"}
 				/>
 			))}
+		</div>
+		<div class="mx-auto mt-8 max-w-6xl">
+			<a
+				href="/services"
+				class="inline-flex items-center gap-2 text-sm font-semibold text-primary-green transition-colors hover:text-primary-dark dark:text-dark-green dark:hover:text-dark-text"
+			>
+				Learn more about our services <span aria-hidden="true">→</span>
+			</a>
 		</div>
 	</div>
 </section>
