@@ -16,18 +16,28 @@ const services = [
 		],
 	},
 	{
-		title: "Website Maintenance",
-		icon: "maintenance",
+		title: "UI/UX Design",
+		icon: "uiux",
 		description:
-			"We keep your digital presence secure and up-to-date so you can focus on running your business.",
-		bullets: ["Security & Plugin Updates", "Bug Fixes", "Performance Checks", "Content Updates"],
+			"We shape clear, accessible digital experiences around the needs of your customers and the goals of your business, from early research through polished interface design.",
+		bullets: [
+			"User and audience research",
+			"Information architecture and user flows",
+			"Wireframes and interactive prototypes",
+			"Responsive interface design",
+		],
 	},
 	{
 		title: "Graphic Design & Branding",
 		icon: "branding",
 		description:
 			"From logo creation to complete visual identities, we ensure your brand looks professional everywhere.",
-		bullets: ["Logo Design", "Brand Guidelines", "Marketing Collateral", "Social Media Assets"],
+		bullets: [
+			"Logo Design",
+			"Brand Guidelines",
+			"Marketing Collateral",
+			"Social Media Assets",
+		],
 	},
 	{
 		title: "Digital Marketing",
@@ -41,12 +51,60 @@ const services = [
 			"Analytics & Reporting",
 		],
 	},
+	{
+		title: "Website Maintenance",
+		icon: "maintenance",
+		description:
+			"We keep your digital presence secure and up-to-date so you can focus on running your business.",
+		bullets: [
+			"Security & Plugin Updates",
+			"Bug Fixes",
+			"Performance Checks",
+			"Content Updates",
+		],
+	},
+	{
+		title: "Packaging Design",
+		icon: "packaging",
+		description:
+			"Packaging that protects your product, communicates your brand clearly, and creates a considered experience from shelf to delivery.",
+		bullets: [
+			"Product packaging concepts",
+			"Label and information layout",
+			"Print-ready artwork and specifications",
+			"Packaging aligned with brand guidelines",
+		],
+	},
+	{
+		title: "Digital Experiences",
+		icon: "experience",
+		description:
+			"Engaging digital touchpoints that bring your brand, content, and services together across devices and platforms.",
+		bullets: [
+			"Interactive campaign and landing pages",
+			"Digital product and service experiences",
+			"Cross-device experience design",
+			"Content and interaction planning",
+		],
+	},
+	{
+		title: "Publications",
+		icon: "publication",
+		description:
+			"Thoughtfully designed print and digital publications that make complex information engaging, clear, and easy to navigate.",
+		bullets: [
+			"Reports, brochures, and company profiles",
+			"Editorial layout and typography",
+			"Digital and print-ready formats",
+			"Publication design aligned with your brand",
+		],
+	},
 ];
 ---
 
 <BaseLayout
 	title="Our Services"
-	description="Explore our web design, maintenance, branding, and digital marketing services."
+	description="Explore Waliya's website, UI/UX, branding, marketing, packaging, digital experience, and publication services."
 >
 	<section class="mx-auto max-w-7xl px-6 py-20 md:py-28">
 		<div class="max-w-3xl">
@@ -62,7 +120,7 @@ const services = [
 			</p>
 		</div>
 
-		<div class="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-2">
+		<div class="mx-auto mt-14 grid max-w-6xl gap-5 md:grid-cols-2">
 			{services.map((service) => <ServiceCard {...service} />)}
 		</div>
 	</section>

@@ -16,10 +16,10 @@ const isCurrentPage = (href: string) => href.replace(/\/$/, "") === currentPath;
 		<div class="flex items-center justify-between gap-3 rounded-full border border-[#E5E3DC] bg-white/90 px-4 py-2 shadow-sm backdrop-blur-md dark:border-gray-800 dark:bg-gray-900/90 lg:gap-5 lg:py-2 lg:pl-6 lg:pr-2">
 			<a
 				href="/"
-				class="shrink-0 text-lg font-bold tracking-tight text-primary-dark dark:text-dark-text"
-				aria-label="Waliya Enterprizes home"
+				class="shrink-0 text-2xl font-bold tracking-tight text-primary-dark dark:text-dark-text"
+				aria-label="Waliya home"
 			>
-				W<span class="text-[#B5653A]">a</span>l<span class="text-[#B5653A]">i</span>ya Enterprizes
+				W<span class="text-[#B5653A]">a</span>l<span class="text-[#B5653A]">i</span>ya
 			</a>
 
 			<nav aria-label="Main navigation" class="hidden items-center gap-6 lg:flex">
@@ -28,10 +28,10 @@ const isCurrentPage = (href: string) => href.replace(/\/$/, "") === currentPath;
 						<a
 							href={link.href}
 							class:list={[
-								"relative whitespace-nowrap py-2 text-sm transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#3A6931] after:transition-transform after:duration-300 hover:text-[#3A6931] hover:after:scale-x-100 dark:after:bg-dark-green dark:hover:text-dark-green",
+								"relative whitespace-nowrap py-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#3A6931] after:transition-transform after:duration-300 hover:text-[#3A6931] hover:after:scale-x-100 dark:after:bg-dark-green dark:hover:text-dark-green",
 								isCurrentPage(link.href)
 									? "font-semibold text-[#3A6931] after:scale-x-100 dark:text-dark-green"
-									: "font-medium text-text",
+									: "text-text",
 							]}
 							aria-current={isCurrentPage(link.href) ? "page" : undefined}
 						>
@@ -42,13 +42,6 @@ const isCurrentPage = (href: string) => href.replace(/\/$/, "") === currentPath;
 			</nav>
 
 			<div class="flex shrink-0 items-center gap-2">
-				<a
-					href="/contact"
-					class="hidden rounded-full bg-[#3A6931] px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#2A4D24] lg:inline-flex"
-				>
-					Get in Touch
-				</a>
-
 				<button
 					type="button"
 					class="inline-flex size-10 items-center justify-center rounded-full text-text transition-colors hover:bg-surface dark:hover:bg-gray-800"
@@ -82,6 +75,13 @@ const isCurrentPage = (href: string) => href.replace(/\/$/, "") === currentPath;
 						<path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
 					</svg>
 				</button>
+
+				<a
+					href="/contact"
+					class="hidden rounded-full bg-[#3A6931] px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#2A4D24] lg:inline-flex"
+				>
+					Get in Touch
+				</a>
 
 				<button
 					id="mobile-menu-button"
