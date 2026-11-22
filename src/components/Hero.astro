@@ -44,7 +44,7 @@ const slides = [
 				<div
 					id={`hero-copy-${slide.id}`}
 					class:list={[
-						"hero-copy-slide absolute inset-0 flex flex-col justify-center px-6 py-20 transition-opacity duration-1000 ease-in-out md:px-0 md:py-0",
+						"hero-copy-slide absolute inset-0 flex flex-col justify-center px-6 pt-36 pb-20 transition-opacity duration-1000 ease-in-out md:px-0 md:py-0",
 						index === 0 ? "opacity-100" : "opacity-0",
 					]}
 					aria-hidden={index === 0 ? "false" : "true"}
@@ -78,7 +78,7 @@ const slides = [
 			))}
 		</div>
 
-		<div class="fade-up absolute inset-0 z-0 h-full w-full md:relative md:inset-auto md:z-auto md:ml-4 md:h-auto md:w-auto" style="animation-delay: 500ms">
+		<div class="hero-image-background fade-up absolute inset-0 z-0 h-full w-full md:relative md:inset-auto md:z-auto md:ml-4 md:h-auto md:w-auto" style="animation-delay: 500ms">
 			<div class="hero-image-frame relative h-full w-full overflow-hidden bg-[#E5E3DC] dark:bg-dark-border md:aspect-[5/6] md:h-auto md:w-auto">
 				{slides.map((slide, index) => (
 					<div
@@ -264,6 +264,14 @@ const slides = [
 		opacity: 0;
 		transform: translateY(20px);
 		animation: hero-fade-up 800ms ease-out both;
+	}
+
+	@media (max-width: 767px) {
+		.hero-image-background.fade-up {
+			animation: none;
+			opacity: 1;
+			transform: none;
+		}
 	}
 
 	@keyframes hero-ken-burns {
