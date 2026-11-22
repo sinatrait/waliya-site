@@ -33,31 +33,31 @@ const slides = [
 
 <section
 	id="hero-carousel"
-	class="hero-grid relative isolate bg-[#F7F6F2] dark:bg-dark-page"
+	class="hero-grid relative isolate min-h-[100svh] bg-[#F7F6F2] dark:bg-dark-page md:min-h-0"
 	role="region"
 	aria-roledescription="carousel"
 	aria-label="Featured services"
 >
-	<div class="mx-auto grid min-h-[80vh] max-w-7xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:py-24">
-		<div class="fade-up relative z-10 min-h-[560px] md:ml-4 md:min-h-[520px]" style="animation-delay: 100ms">
+	<div class="relative mx-auto grid min-h-[100svh] w-full max-w-7xl grid-cols-1 items-center md:min-h-[80vh] md:grid-cols-2 md:gap-16 md:px-6 md:py-24">
+		<div class="fade-up relative z-10 flex min-h-[100svh] flex-col justify-center px-6 py-20 md:ml-4 md:min-h-[520px] md:px-0 md:py-0" style="animation-delay: 100ms">
 			{slides.map((slide, index) => (
 				<div
 					id={`hero-copy-${slide.id}`}
 					class:list={[
-						"hero-copy-slide absolute inset-0 flex flex-col justify-center transition-opacity duration-1000 ease-in-out",
+						"hero-copy-slide absolute inset-0 flex flex-col justify-center px-6 py-20 transition-opacity duration-1000 ease-in-out md:px-0 md:py-0",
 						index === 0 ? "opacity-100" : "opacity-0",
 					]}
 					aria-hidden={index === 0 ? "false" : "true"}
 					data-active={index === 0 ? "true" : "false"}
 					inert={index !== 0}
 				>
-					<p class="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
+					<p class="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-white/85 md:text-primary-green dark:md:text-dark-green">
 						Waliya
 					</p>
-					<h1 class="max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight text-primary-dark dark:text-dark-text md:text-7xl">
+					<h1 class="max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight text-white md:text-7xl md:text-primary-dark dark:md:text-dark-text">
 						{slide.headline}
 					</h1>
-					<p class="mt-7 max-w-xl text-lg leading-8 text-text">
+					<p class="mt-7 max-w-xl text-lg leading-8 text-white/90 md:text-text">
 						{slide.subheadline}
 					</p>
 					<div class="mt-9 flex flex-wrap gap-4">
@@ -69,7 +69,7 @@ const slides = [
 						</a>
 						<a
 							href="/services"
-							class="inline-flex items-center justify-center border border-primary-green px-6 py-3.5 text-sm font-semibold text-primary-green transition-colors hover:bg-primary-green hover:text-white dark:border-dark-green dark:text-dark-green dark:hover:bg-dark-green dark:hover:text-dark-page"
+							class="inline-flex items-center justify-center border border-white px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-primary-dark md:border-primary-green md:text-primary-green md:hover:bg-primary-green md:hover:text-white dark:md:border-dark-green dark:md:text-dark-green dark:md:hover:bg-dark-green dark:md:hover:text-dark-page"
 						>
 							Explore Services
 						</a>
@@ -78,8 +78,8 @@ const slides = [
 			))}
 		</div>
 
-		<div class="fade-up relative z-10 md:ml-4" style="animation-delay: 500ms">
-			<div class="hero-image-frame relative aspect-[4/5] overflow-hidden bg-[#E5E3DC] dark:bg-dark-border md:aspect-[5/6]">
+		<div class="fade-up absolute inset-0 z-0 h-full w-full md:relative md:inset-auto md:z-auto md:ml-4 md:h-auto md:w-auto" style="animation-delay: 500ms">
+			<div class="hero-image-frame relative h-full w-full overflow-hidden bg-[#E5E3DC] dark:bg-dark-border md:aspect-[5/6] md:h-auto md:w-auto">
 				{slides.map((slide, index) => (
 					<div
 						class:list={[
@@ -98,6 +98,10 @@ const slides = [
 						/>
 					</div>
 				))}
+				<div
+					class="absolute inset-0 z-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20 md:hidden"
+					aria-hidden="true"
+				></div>
 				<button
 					type="button"
 					class="hero-rotation-toggle absolute bottom-6 right-6 z-10 border border-[#E5E3DC] bg-white/95 px-3 py-2 text-xs font-semibold text-primary-dark transition-[opacity,color,background-color] duration-200 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-green dark:border-dark-border dark:bg-dark-surface/95 dark:text-dark-text dark:hover:bg-dark-surface"
@@ -106,7 +110,7 @@ const slides = [
 				>
 					Pause
 				</button>
-				<div class="absolute bottom-4 left-4 z-10 flex max-w-[calc(100%-2rem)] items-center gap-2 border border-[#E5E3DC] bg-white/95 px-3 py-3 shadow-lg backdrop-blur-sm dark:border-dark-border dark:bg-dark-surface/95 sm:bottom-6 sm:left-6 sm:gap-3 sm:px-5">
+				<div class="absolute bottom-8 left-6 z-20 flex max-w-[calc(100%-3rem)] items-center gap-2 border border-[#E5E3DC] bg-white/95 px-3 py-3 shadow-lg backdrop-blur-sm dark:border-dark-border dark:bg-dark-surface/95 md:bottom-6 md:left-6 sm:gap-3 sm:px-5">
 					<span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#F7F6F2] text-primary-green dark:bg-dark-page dark:text-dark-green sm:size-9">
 						<svg
 							class="size-5"
