@@ -1,0 +1,208 @@
+---
+const plans = [
+	{
+		name: "Essential",
+		price: "₹25,000",
+		priceNote: "Starting at",
+		features: [
+			"Up to 5 Pages",
+			"Mobile-Responsive",
+			"Contact Form",
+			"Basic SEO",
+			"1 Month Support",
+		],
+	},
+	{
+		name: "Professional",
+		price: "₹45,000",
+		priceNote: "Starting at",
+		recommended: true,
+		features: [
+			"Up to 8 Pages",
+			"Advanced SEO",
+			"Google Analytics",
+			"Blog Setup",
+			"3 Months Support",
+		],
+	},
+	{
+		name: "Premium",
+		price: "Custom",
+		priceNote: "Starting at ₹75,000",
+		features: [
+			"Unlimited Pages",
+			"E-commerce/Booking",
+			"Custom Integrations",
+			"Priority Support",
+		],
+	},
+];
+---
+
+<div
+	id="pricing-modal"
+	class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm"
+	aria-hidden="true"
+>
+	<div
+		class="relative my-auto max-h-[calc(100vh-2rem)] w-full max-w-5xl overflow-y-auto rounded-lg border border-border bg-white p-6 text-text dark:border-dark-border dark:bg-dark-page dark:text-dark-text sm:p-8 lg:p-10"
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="pricing-modal-title"
+		aria-describedby="pricing-modal-description"
+		tabindex="-1"
+	>
+		<button
+			type="button"
+			class="absolute right-4 top-4 inline-flex size-10 items-center justify-center rounded-full text-text transition-colors hover:bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-green dark:text-dark-text dark:hover:bg-dark-surface dark:focus-visible:outline-dark-green sm:right-6 sm:top-6"
+			data-close-pricing-modal
+			aria-label="Close pricing"
+		>
+			<svg
+				class="size-5"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.8"
+				stroke-linecap="round"
+				aria-hidden="true"
+			>
+				<path d="m6 6 12 12M18 6 6 18"></path>
+			</svg>
+		</button>
+
+		<div class="mx-auto max-w-2xl pr-10 text-center sm:px-8">
+			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
+				Pricing
+			</p>
+			<h2
+				id="pricing-modal-title"
+				class="mt-3 text-2xl font-semibold tracking-tight text-primary-dark dark:text-dark-text sm:text-3xl"
+			>
+				Transparent Pricing
+			</h2>
+			<p id="pricing-modal-description" class="mt-3 text-sm leading-6 text-text sm:text-base">
+				Straightforward packages designed to get your business online without hidden costs.
+			</p>
+		</div>
+
+		<div class="mt-8 grid gap-5 lg:grid-cols-3">
+			{
+				plans.map((plan) => (
+					<article
+						class:list={[
+							"relative flex flex-col rounded-lg border p-6 transition-transform duration-300 hover:-translate-y-1",
+							plan.recommended
+								? "border-primary-green bg-primary-green text-white dark:border-dark-green dark:bg-primary-dark"
+								: "border-border bg-white text-text dark:bg-dark-surface",
+						]}
+					>
+						{plan.recommended && (
+							<span class="absolute -top-3 left-6 bg-[#B5653A] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+								Recommended
+							</span>
+						)}
+						<h3
+							class:list={[
+								"text-lg font-semibold",
+								plan.recommended ? "text-white" : "text-primary-dark dark:text-dark-text",
+							]}
+						>
+							{plan.name}
+						</h3>
+						<p class:list={["mt-5 text-xs", plan.recommended ? "text-white/80" : "text-text"]}>
+							{plan.priceNote}
+						</p>
+						<p
+							class:list={[
+								"mt-1 text-3xl font-bold tracking-tight",
+								plan.recommended ? "text-white" : "text-primary-dark dark:text-dark-text",
+							]}
+						>
+							{plan.price}
+						</p>
+
+						<ul class="mt-5 flex-1 space-y-3 border-t border-current/20 pt-5">
+							{plan.features.map((feature) => (
+								<li class="flex items-start gap-3 text-sm leading-5">
+									<svg
+										class:list={[
+											"mt-0.5 size-5 shrink-0",
+											plan.recommended ? "text-white" : "text-primary-green dark:text-dark-green",
+										]}
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.6"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										aria-hidden="true"
+									>
+										<path d="m5 12 4 4L19 6"></path>
+									</svg>
+									<span>{feature}</span>
+								</li>
+							))}
+						</ul>
+
+						<a
+							href="/contact"
+							class:list={[
+								"mt-6 inline-flex min-h-11 items-center justify-center px-4 py-3 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+								plan.recommended
+									? "bg-white text-primary-dark hover:bg-surface focus-visible:outline-white dark:bg-dark-text dark:hover:bg-white"
+									: "border border-primary-green text-primary-green hover:bg-primary-green hover:text-white focus-visible:outline-primary-green dark:border-dark-green dark:text-dark-green dark:hover:bg-dark-green dark:hover:text-dark-page dark:focus-visible:outline-dark-green",
+							]}
+						>
+							Choose Plan
+						</a>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</div>
+
+<script>
+	function initializePricingModal() {
+		const modal = document.getElementById("pricing-modal");
+		const dialog = modal?.querySelector<HTMLElement>('[role="dialog"]');
+		const openButton = document.getElementById("open-pricing-modal");
+		const closeButton = modal?.querySelector<HTMLButtonElement>("[data-close-pricing-modal]");
+
+		if (!modal || !dialog || !openButton || !closeButton || modal.dataset.bound === "true") return;
+		modal.dataset.bound = "true";
+
+		let trigger: HTMLElement | null = null;
+
+		const closeModal = () => {
+			modal.classList.add("hidden");
+			modal.classList.remove("flex");
+			modal.setAttribute("aria-hidden", "true");
+			document.body.classList.remove("overflow-hidden");
+			trigger?.focus();
+		};
+
+		const onOpen = (event: Event) => {
+			event.preventDefault();
+			trigger = openButton;
+			modal.classList.remove("hidden");
+			modal.classList.add("flex");
+			modal.setAttribute("aria-hidden", "false");
+			document.body.classList.add("overflow-hidden");
+			closeButton.focus();
+		};
+
+		openButton.addEventListener("click", onOpen);
+		closeButton.addEventListener("click", closeModal);
+		modal.addEventListener("click", (event) => {
+			if (event.target === modal) closeModal();
+		});
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+		});
+	}
+
+	document.addEventListener("astro:page-load", initializePricingModal);
+	initializePricingModal();
+</script>

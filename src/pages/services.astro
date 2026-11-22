@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ServiceCard from "../components/ServiceCard.astro";
+import PricingModal from "../components/PricingModal.astro";
 
 const services = [
 	{
@@ -121,7 +122,15 @@ const services = [
 		</div>
 
 		<div class="mx-auto mt-14 grid max-w-6xl gap-5 md:grid-cols-2">
-			{services.map((service) => <ServiceCard {...service} />)}
+			{
+				services.map((service) => (
+					<ServiceCard
+						{...service}
+						viewPricing={service.title === "Website Design & Development"}
+					/>
+				))
+			}
 		</div>
 	</section>
+	<PricingModal />
 </BaseLayout>
