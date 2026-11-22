@@ -44,7 +44,7 @@ const slides = [
 				<div
 					id={`hero-copy-${slide.id}`}
 					class:list={[
-						"hero-copy-slide absolute inset-0 flex flex-col justify-center px-6 pt-36 pb-20 transition-opacity duration-1000 ease-in-out md:px-0 md:py-0",
+						"hero-copy-slide absolute inset-0 flex flex-col justify-center px-6 pt-36 pb-40 transition-opacity duration-1000 ease-in-out md:px-0 md:py-0",
 						index === 0 ? "opacity-100" : "opacity-0",
 					]}
 					aria-hidden={index === 0 ? "false" : "true"}
@@ -54,22 +54,22 @@ const slides = [
 					<p class="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-white/85 md:text-primary-green dark:md:text-dark-green">
 						Waliya
 					</p>
-					<h1 class="max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight text-white md:text-7xl md:text-primary-dark dark:md:text-dark-text">
+					<h1 class="max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white md:text-7xl md:text-primary-dark dark:md:text-dark-text">
 						{slide.headline}
 					</h1>
-					<p class="mt-7 max-w-xl text-lg leading-8 text-white/90 md:text-text">
+					<p class="mt-6 max-w-xl text-base leading-7 text-white/90 md:mt-7 md:text-lg md:leading-8 md:text-text">
 						{slide.subheadline}
 					</p>
-					<div class="mt-9 flex flex-wrap gap-4">
+					<div class="mt-9 grid w-full grid-cols-2 gap-3 md:flex md:flex-row md:w-auto md:gap-4">
 						<a
 							href="/contact"
-							class="inline-flex items-center justify-center bg-[#3A6931] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+							class="inline-flex w-full items-center justify-center bg-[#3A6931] px-2 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark md:w-auto md:px-6 md:py-3.5"
 						>
 							Start a Conversation
 						</a>
 						<a
 							href="/services"
-							class="inline-flex items-center justify-center border border-white px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-primary-dark md:border-primary-green md:text-primary-green md:hover:bg-primary-green md:hover:text-white dark:md:border-dark-green dark:md:text-dark-green dark:md:hover:bg-dark-green dark:md:hover:text-dark-page"
+							class="inline-flex w-full items-center justify-center border border-white px-2 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-primary-dark md:w-auto md:px-6 md:py-3.5 md:border-primary-green md:text-primary-green md:hover:bg-primary-green md:hover:text-white dark:md:border-dark-green dark:md:text-dark-green dark:md:hover:bg-dark-green dark:md:hover:text-dark-page"
 						>
 							Explore Services
 						</a>
@@ -264,6 +264,37 @@ const slides = [
 		opacity: 0;
 		transform: translateY(20px);
 		animation: hero-fade-up 800ms ease-out both;
+	}
+
+	@media (max-width: 767px) and (max-height: 700px) {
+		.hero-copy-slide {
+			padding-top: 6rem;
+			padding-bottom: 7rem;
+		}
+
+		.hero-copy-slide > p:first-child {
+			margin-bottom: 0.75rem;
+		}
+
+		.hero-copy-slide h1 {
+			font-size: clamp(1.75rem, 8vw, 2rem);
+		}
+
+		.hero-copy-slide > p:nth-of-type(2) {
+			margin-top: 1rem;
+			font-size: 0.9375rem;
+			line-height: 1.35rem;
+		}
+
+		.hero-copy-slide .mt-9 {
+			margin-top: 1rem;
+		}
+
+		.hero-copy-slide a {
+			padding-top: 0.75rem;
+			padding-bottom: 0.75rem;
+			font-size: 0.8125rem;
+		}
 	}
 
 	@media (max-width: 767px) {
