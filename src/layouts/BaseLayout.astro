@@ -24,18 +24,24 @@ const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
 	<head>
 		<meta charset="utf-8" />
 		<script is:inline>
-			try {
-				const preference = localStorage.getItem("theme");
+			const applyTheme = (root) => {
+				let preference = null;
+				try {
+					preference = localStorage.getItem("theme");
+				} catch (error) {
+					console.error("Unable to read the saved theme preference.", error);
+				}
+
 				const isDark =
 					preference === "dark" ||
 					(preference !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
-				document.documentElement.classList.toggle("dark", isDark);
-			} catch {
-				document.documentElement.classList.toggle(
-					"dark",
-					window.matchMedia("(prefers-color-scheme: dark)").matches,
-				);
-			}
+				root.classList.toggle("dark", isDark);
+			};
+
+			applyTheme(document.documentElement);
+			document.addEventListener("astro:before-swap", (event) => {
+				applyTheme(event.newDocument.documentElement);
+			});
 		</script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
