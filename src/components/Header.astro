@@ -11,7 +11,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isCurrentPage = (href: string) => href.replace(/\/$/, "") === currentPath;
 ---
 
-<header class="max-md:fixed max-md:left-0 max-md:top-0 max-md:z-50 max-md:w-full max-md:bg-transparent px-4 pt-4 md:sticky md:top-0">
+<header class="sticky top-0 z-50 px-4 pt-4 max-md:fixed max-md:left-0 max-md:z-50 max-md:w-full max-md:bg-transparent">
 	<div class="relative mx-auto max-w-7xl">
 		<div class="flex items-center justify-between gap-3 rounded-full border border-[#E5E3DC] bg-white/95 px-4 py-2 shadow-sm backdrop-blur-md dark:border-gray-800 dark:bg-gray-900/95 lg:gap-5 lg:py-2 lg:pl-6 lg:pr-2">
 			<a
@@ -19,7 +19,7 @@ const isCurrentPage = (href: string) => href.replace(/\/$/, "") === currentPath;
 				class="shrink-0 text-2xl font-bold tracking-tight text-primary-dark dark:text-dark-text"
 				aria-label="Waliya home"
 			>
-				W<span class="text-[#B5653A]">a</span>l<span class="text-[#B5653A]">i</span>ya
+				Waliya
 			</a>
 
 			<nav aria-label="Main navigation" class="hidden items-center gap-6 lg:flex">
