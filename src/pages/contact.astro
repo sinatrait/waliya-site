@@ -8,6 +8,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 >
 	<section class="mx-auto max-w-7xl px-6 py-20 md:py-28">
 		<div class="max-w-3xl">
+			<a
+				id="dynamic-back-link"
+				href="/"
+				class="mb-8 hidden items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-[#3A6931] dark:text-gray-400 dark:hover:text-green-500"
+			>
+				&larr; Back to Home
+			</a>
 			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
 				Contact
 			</p>
@@ -156,6 +163,62 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		</div>
 	</section>
 </BaseLayout>
+
+<script>
+	const initializeBackLink = () => {
+		const backLink = document.getElementById("dynamic-back-link");
+		if (!backLink) return;
+		if (backLink.dataset.initialized === "true") return;
+		backLink.dataset.initialized = "true";
+
+		const isNavLink = new URLSearchParams(window.location.search).get("ref") === "nav";
+		let contactOriginPath: string | null = null;
+		try {
+			contactOriginPath = sessionStorage.getItem("contactOriginPath");
+			sessionStorage.removeItem("contactOriginPath");
+		} catch (error) {
+			console.error("Unable to read contact navigation history.", error);
+		}
+
+		if (isNavLink) {
+			backLink.classList.add("hidden");
+			return;
+		}
+
+		const referrer = document.referrer;
+		console.log("Referrer is:", referrer);
+		const originPath =
+			contactOriginPath || (referrer ? new URL(referrer).pathname : "");
+		if (!originPath || originPath === "/contact") {
+			backLink.classList.add("hidden");
+			return;
+		}
+
+		backLink.classList.remove("hidden");
+		backLink.classList.add("inline-flex");
+
+		if (originPath === "/services") {
+			backLink.innerHTML = "&larr; Back to Services";
+			backLink.href = "/services";
+		} else if (originPath === "/client-stories") {
+			backLink.innerHTML = "&larr; Back to Client Stories";
+			backLink.href = "/client-stories";
+		} else if (originPath === "/about") {
+			backLink.innerHTML = "&larr; Back to About";
+			backLink.href = "/about";
+		} else {
+			backLink.innerHTML = "&larr; Back to Home";
+			backLink.href = "/";
+		}
+	};
+
+	if (document.documentElement.dataset.contactBackLinkHandlerBound !== "true") {
+		document.documentElement.dataset.contactBackLinkHandlerBound = "true";
+		document.addEventListener("DOMContentLoaded", initializeBackLink);
+		document.addEventListener("astro:page-load", initializeBackLink);
+	}
+	initializeBackLink();
+</script>
 
 <script is:inline>
 	(() => {

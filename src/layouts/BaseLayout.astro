@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -54,6 +55,7 @@ const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageUrl} />
+		<ClientRouter />
 	</head>
 	<body>
 		<Header />
@@ -61,5 +63,25 @@ const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
 			<slot />
 		</main>
 		<Footer />
+		<script is:inline>
+			if (document.documentElement.dataset.contactOriginTrackingBound !== "true") {
+				document.documentElement.dataset.contactOriginTrackingBound = "true";
+				document.addEventListener("click", (event) => {
+					if (!(event.target instanceof Element)) return;
+					const link = event.target.closest("a[href]");
+					if (!(link instanceof HTMLAnchorElement) || link.dataset.isNav === "true") return;
+
+					const destination = new URL(link.href, window.location.href);
+					if (destination.origin !== window.location.origin || destination.pathname !== "/contact") return;
+					if (window.location.pathname === "/contact") return;
+
+					try {
+						sessionStorage.setItem("contactOriginPath", window.location.pathname);
+					} catch (error) {
+						console.error("Unable to save the contact link origin.", error);
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

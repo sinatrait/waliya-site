@@ -26,7 +26,8 @@ const isCurrentPage = (href: string) => href.replace(/\/$/, "") === currentPath;
 				{
 					links.map((link) => (
 						<a
-							href={link.href}
+							href={link.label === "Contact" ? "/contact?ref=nav" : link.href}
+							data-is-nav={link.label === "Contact" ? "true" : undefined}
 							class:list={[
 								"relative whitespace-nowrap py-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#3A6931] after:transition-transform after:duration-300 hover:text-[#3A6931] hover:after:scale-x-100 dark:after:bg-dark-green dark:hover:text-dark-green",
 								isCurrentPage(link.href)
@@ -130,7 +131,8 @@ const isCurrentPage = (href: string) => href.replace(/\/$/, "") === currentPath;
 				{
 					links.map((link) => (
 						<a
-							href={link.href}
+							href={link.label === "Contact" ? "/contact?ref=nav" : link.href}
+							data-is-nav={link.label === "Contact" ? "true" : undefined}
 							class:list={[
 								"border-b border-border py-3 text-sm last:border-0 hover:text-primary-green dark:hover:text-dark-green",
 								isCurrentPage(link.href)
