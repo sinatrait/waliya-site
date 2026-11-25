@@ -252,7 +252,15 @@ Please let me know the next steps to get started.`;
 
 		if (timeZoneField instanceof HTMLInputElement && !timeZoneField.value.trim()) {
 			try {
-				timeZoneField.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+				const detectedTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+				const timeZone = detectedTimeZone === "Asia/Calcutta" ? "Asia/Kolkata" : detectedTimeZone;
+				const offsetMinutes = -new Date().getTimezoneOffset();
+				const offsetSign = offsetMinutes >= 0 ? "+" : "-";
+				const absoluteOffset = Math.abs(offsetMinutes);
+				const offsetHours = Math.floor(absoluteOffset / 60);
+				const offsetRemainder = String(absoluteOffset % 60).padStart(2, "0");
+
+				timeZoneField.value = `${timeZone} (GMT${offsetSign}${offsetHours}:${offsetRemainder})`;
 			} catch (error) {
 				console.error("Unable to detect the browser time zone.", error);
 			}
@@ -268,7 +276,8 @@ Please let me know the next steps to get started.`;
 			const location = trace.split(/\r?\n/).find((line) => line.startsWith("loc="));
 			const countryCode = location?.slice("loc=".length).trim();
 			if (countryCode && !countryField.value.trim()) {
-				countryField.value = countryCode;
+				const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+				countryField.value = regionNames.of(countryCode) || countryCode;
 			}
 		} catch (error) {
 			console.error("Unable to detect the visitor's country.", error);
