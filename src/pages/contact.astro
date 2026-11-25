@@ -18,7 +18,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
 				Contact
 			</p>
-			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-primary-dark dark:text-dark-text md:text-5xl">
+			<h1 id="contact-heading" class="mt-4 text-4xl font-semibold tracking-tight text-primary-dark dark:text-dark-text md:text-5xl">
 				Let’s start a conversation.
 			</h1>
 			<p class="mt-5 text-lg leading-8 text-text">
@@ -47,6 +47,43 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 							type="text"
 							autocomplete="name"
 							required
+							class="w-full border border-primary-green bg-white px-4 py-3 text-text outline-none transition focus:border-primary-dark dark:border-dark-green dark:bg-dark-surface dark:focus:border-dark-text"
+						/>
+					</div>
+					<div>
+						<label for="business-name" class="mb-2 block text-sm font-semibold text-primary-dark dark:text-dark-text">
+							Business Name
+						</label>
+						<input
+							id="business-name"
+							name="business_name"
+							type="text"
+							autocomplete="organization"
+							class="w-full border border-primary-green bg-white px-4 py-3 text-text outline-none transition focus:border-primary-dark dark:border-dark-green dark:bg-dark-surface dark:focus:border-dark-text"
+						/>
+					</div>
+					<div>
+						<label for="country" class="mb-2 block text-sm font-semibold text-primary-dark dark:text-dark-text">
+							Country
+						</label>
+						<input
+							id="country"
+							name="country"
+							type="text"
+							autocomplete="country-name"
+							required
+							class="w-full border border-primary-green bg-white px-4 py-3 text-text outline-none transition focus:border-primary-dark dark:border-dark-green dark:bg-dark-surface dark:focus:border-dark-text"
+						/>
+					</div>
+					<div>
+						<label for="time-zone" class="mb-2 block text-sm font-semibold text-primary-dark dark:text-dark-text">
+							Time Zone <span class="font-normal text-gray-500 dark:text-gray-400">(optional)</span>
+						</label>
+						<input
+							id="time-zone"
+							name="time_zone"
+							type="text"
+							autocomplete="off"
 							class="w-full border border-primary-green bg-white px-4 py-3 text-text outline-none transition focus:border-primary-dark dark:border-dark-green dark:bg-dark-surface dark:focus:border-dark-text"
 						/>
 					</div>
@@ -174,10 +211,72 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 						<dd class="mt-1 pl-6 text-text">Hyderabad, India</dd>
 					</div>
 				</dl>
+				<p class="mt-6 border-t border-border pt-5 text-sm leading-6 text-text dark:border-dark-border">
+					For international clients: We offer a 4-hour daily overlap with US EST and full overlap
+					with UK GMT. We can invoice in USD, EUR, or GBP.
+				</p>
 			</aside>
 		</div>
 	</section>
 </BaseLayout>
+
+<script>
+	const initializePackageSelection = () => {
+		const plan = new URLSearchParams(window.location.search).get("plan");
+		if (!plan) return;
+
+		const heading = document.getElementById("contact-heading");
+		if (heading) heading.textContent = `Let’s discuss your ${plan} Package`;
+
+		const message = document.getElementById("message");
+		if (!(message instanceof HTMLTextAreaElement) || message.value.trim()) return;
+
+		message.value = `Hi Waliya team,
+
+I am interested in the ${plan} Website Package. Here are a few details about my project:
+
+- Business Name:${" "}
+- Country:${" "}
+- Main Goal for the website:${" "}
+- Do you have existing content/branding?${" "}
+
+Please let me know the next steps to get started.`;
+	};
+
+	document.addEventListener("astro:page-load", initializePackageSelection);
+	initializePackageSelection();
+
+	const initializeVisitorLocation = async () => {
+		const countryField = document.getElementById("country");
+		const timeZoneField = document.getElementById("time-zone");
+
+		if (timeZoneField instanceof HTMLInputElement && !timeZoneField.value.trim()) {
+			try {
+				timeZoneField.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			} catch (error) {
+				console.error("Unable to detect the browser time zone.", error);
+			}
+		}
+
+		if (!(countryField instanceof HTMLInputElement) || countryField.value.trim()) return;
+
+		try {
+			const response = await fetch("https://www.cloudflare.com/cdn-cgi/trace");
+			if (!response.ok) throw new Error(`Country lookup failed with status ${response.status}.`);
+
+			const trace = await response.text();
+			const location = trace.split(/\r?\n/).find((line) => line.startsWith("loc="));
+			const countryCode = location?.slice("loc=".length).trim();
+			if (countryCode && !countryField.value.trim()) {
+				countryField.value = countryCode;
+			}
+		} catch (error) {
+			console.error("Unable to detect the visitor's country.", error);
+		}
+	};
+
+	document.addEventListener("astro:page-load", initializeVisitorLocation);
+</script>
 
 <script>
 	const initializeBackLink = () => {

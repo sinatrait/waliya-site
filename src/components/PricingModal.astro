@@ -2,8 +2,7 @@
 const plans = [
 	{
 		name: "Essential",
-		price: "₹25,000",
-		priceNote: "Starting at",
+		subtitle: "For establishing a professional digital presence.",
 		features: [
 			"Up to 5 Pages",
 			"Mobile-Responsive",
@@ -14,8 +13,7 @@ const plans = [
 	},
 	{
 		name: "Professional",
-		price: "₹45,000",
-		priceNote: "Starting at",
+		subtitle: "For growing businesses focused on lead generation.",
 		recommended: true,
 		features: [
 			"Up to 8 Pages",
@@ -27,8 +25,7 @@ const plans = [
 	},
 	{
 		name: "Premium",
-		price: "Custom",
-		priceNote: "Starting at ₹75,000",
+		subtitle: "For custom functionality and large-scale needs.",
 		features: [
 			"Unlimited Pages",
 			"E-commerce/Booking",
@@ -79,7 +76,7 @@ const plans = [
 				id="pricing-modal-title"
 				class="mt-3 text-2xl font-semibold tracking-tight text-primary-dark dark:text-dark-text sm:text-3xl"
 			>
-				Transparent Pricing
+				Website Packages
 			</h2>
 			<p id="pricing-modal-description" class="mt-3 text-sm leading-6 text-text sm:text-base">
 				Straightforward packages designed to get your business online without hidden costs.
@@ -110,16 +107,13 @@ const plans = [
 						>
 							{plan.name}
 						</h3>
-						<p class:list={["mt-5 text-xs", plan.recommended ? "text-white/80" : "text-text"]}>
-							{plan.priceNote}
-						</p>
 						<p
 							class:list={[
-								"mt-1 text-3xl font-bold tracking-tight",
-								plan.recommended ? "text-white" : "text-primary-dark dark:text-dark-text",
+								"mt-2 min-h-12 text-sm leading-6",
+								plan.recommended ? "text-white/75" : "text-gray-500 dark:text-gray-400",
 							]}
 						>
-							{plan.price}
+							{plan.subtitle}
 						</p>
 
 						<ul class="mt-5 flex-1 space-y-3 border-t border-current/20 pt-5">
@@ -146,7 +140,7 @@ const plans = [
 						</ul>
 
 						<a
-							href="/contact"
+							href={`/contact?plan=${encodeURIComponent(plan.name)}`}
 							class:list={[
 								"mt-6 inline-flex min-h-11 items-center justify-center px-4 py-3 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
 								plan.recommended
