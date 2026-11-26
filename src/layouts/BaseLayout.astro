@@ -17,6 +17,7 @@ const {
 const pageTitle = `Waliya | ${title}`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
 ---
 
 <!doctype html>
@@ -40,8 +41,18 @@ const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
 				applyTheme(event.newDocument.documentElement);
 			});
 		</script>
+		{import.meta.env.PROD && GA_ID && (
+			<>
+				<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+				<script is:inline define:vars={{ GA_ID }}>
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', GA_ID);
+				</script>
+			</>
+		)}
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
