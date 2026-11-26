@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://waliyaenterprizes.com',
+  site: 'https://waliya.in',
   devToolbar: {
     enabled: false
   },
