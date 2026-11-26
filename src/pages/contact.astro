@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getNames } from "country-list";
+
+const countries = getNames();
 ---
 
 <BaseLayout
@@ -70,10 +73,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 							id="country"
 							name="country"
 							type="text"
+							list="country-list"
 							autocomplete="country-name"
 							required
 							class="w-full border border-primary-green bg-white px-4 py-3 text-text outline-none transition focus:border-primary-dark dark:border-dark-green dark:bg-dark-surface dark:focus:border-dark-text"
 						/>
+						<datalist id="country-list">
+							{countries.map((country) => <option value={country}></option>)}
+						</datalist>
 					</div>
 					<div>
 						<label for="time-zone" class="mb-2 block text-sm font-semibold text-primary-dark dark:text-dark-text">
