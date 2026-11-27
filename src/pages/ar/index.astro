@@ -3,19 +3,29 @@ import BaseLayoutRTL from "../../layouts/BaseLayoutRTL.astro";
 ---
 
 <BaseLayoutRTL title="مرحبًا بكم في واليا">
-	<section class="bg-surface dark:bg-dark-page">
-		<div class="mx-auto max-w-7xl px-6 py-24 md:py-32">
+	<section class="relative isolate min-h-[75svh] overflow-hidden md:min-h-[80vh]">
+		<img
+			src="/images/hero.jpg"
+			alt=""
+			class="absolute inset-0 size-full object-cover"
+			fetchpriority="high"
+		/>
+		<div
+			class="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-black/20"
+			aria-hidden="true"
+		></div>
+		<div class="relative z-10 mx-auto flex min-h-[75svh] max-w-7xl items-center px-6 py-28 text-right md:min-h-[80vh] md:py-32">
 			<div class="max-w-4xl">
-				<p class="text-sm font-semibold tracking-[0.16em] text-primary-green dark:text-dark-green">
+				<p class="text-sm font-semibold tracking-[0.16em] text-white/85">
 					واليا
 				</p>
-				<h1 class="mt-5 text-4xl font-semibold leading-relaxed tracking-tight text-primary-dark dark:text-dark-text md:text-6xl">
+				<h1 class="mt-5 text-4xl font-semibold leading-relaxed tracking-tight text-white md:text-6xl">
 					حلول رقمية وخدمات أعمال تدفعك إلى الأمام
 				</h1>
-				<p class="mt-6 max-w-3xl text-lg leading-9 text-text md:text-xl">
+				<p class="mt-6 max-w-3xl text-lg leading-9 text-white/90 md:text-xl">
 					نساعد الشركات الناشئة والشركات الصغيرة في جميع أنحاء العالم على بناء حضور رقمي احترافي والحصول على دعم عملي للأعمال.
 				</p>
-				<div class="mt-9 flex flex-wrap gap-4">
+				<div class="mt-9 flex flex-wrap justify-start gap-4">
 					<a
 						href="/contact"
 						class="inline-flex items-center justify-center bg-primary-green px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
@@ -79,7 +89,7 @@ import BaseLayoutRTL from "../../layouts/BaseLayoutRTL.astro";
 	</section>
 
 	<section class="bg-primary-dark dark:bg-dark-page">
-		<div class="mx-auto flex max-w-7xl flex-col items-start gap-8 px-6 py-16 md:flex-row md:items-center md:justify-between md:py-20">
+		<div class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-16 text-center md:flex-row md:items-center md:justify-between md:gap-8 md:py-20 md:text-right">
 			<h2 class="max-w-2xl text-3xl font-semibold leading-relaxed tracking-tight text-white md:text-4xl">
 				هل أنت مستعد لتنمية أعمالك؟
 			</h2>

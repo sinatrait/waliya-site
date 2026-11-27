@@ -1,45 +1,50 @@
 ---
 const year = new Date().getFullYear();
+const isArabic = Astro.url.pathname.startsWith("/ar");
 ---
 
 <footer class="border-t border-border bg-surface">
 	<div class="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 md:flex-row md:items-center md:justify-between">
 		<div class="space-y-2">
-			<a href="/" class="inline-flex items-center">
-				<img src="/waliya-logo.svg" alt="Waliya Logo" class="h-6 w-auto md:h-7 dark:brightness-0 dark:invert" />
+			<a href={isArabic ? "/ar/" : "/"} class="inline-flex items-center" aria-label={isArabic ? "الصفحة الرئيسية لواليا" : "Waliya home"}>
+				<img src="/waliya-logo.svg" alt={isArabic ? "شعار واليا" : "Waliya Logo"} class="h-6 w-auto md:h-7 dark:brightness-0 dark:invert" />
 			</a>
 			<p class="text-sm text-text">
-				© {year} Waliya. All rights reserved. Operated by Waliya Enterprizes.
+				{isArabic
+					? `© ${year} واليا. جميع الحقوق محفوظة. بإدارة واليا إنتربرايزز.`
+					: `© ${year} Waliya. All rights reserved. Operated by Waliya Enterprizes.`}
 			</p>
-			<p class="text-sm text-text">Hyderabad, India (Serving Globally)</p>
+			<p class="text-sm text-text">
+				{isArabic ? "حيدر آباد، الهند (نخدم عملاء حول العالم)" : "Hyderabad, India (Serving Globally)"}
+			</p>
 		</div>
 
-		<nav aria-label="Footer navigation" class="flex flex-wrap gap-x-6 gap-y-3">
-			<a href="/" class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">Home</a>
+		<nav aria-label={isArabic ? "روابط التذييل" : "Footer navigation"} class="flex flex-wrap gap-x-6 gap-y-3">
+			<a href={isArabic ? "/ar/" : "/"} class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">{isArabic ? "الرئيسية" : "Home"}</a>
 			<a href="/services" class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">
-				Services
+				{isArabic ? "خدماتنا" : "Services"}
 			</a>
-			<a href="/about" class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">About</a>
+			<a href="/about" class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">{isArabic ? "من نحن" : "About"}</a>
 			<a
 				href="/client-stories"
 				class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green"
 			>
-				Client Stories
+				{isArabic ? "قصص النجاح" : "Client Stories"}
 			</a>
 			<a href="/contact" class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">
-				Contact
+				{isArabic ? "اتصل بنا" : "Contact"}
 			</a>
 			<a
 				href="/privacy-policy"
 				class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green"
 			>
-				Privacy Policy
+				{isArabic ? "سياسة الخصوصية" : "Privacy Policy"}
 			</a>
 			<a
 				href="/terms-conditions"
 				class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green"
 			>
-				Terms &amp; Conditions
+				{isArabic ? "الشروط والأحكام" : "Terms & Conditions"}
 			</a>
 		</nav>
 	</div>
