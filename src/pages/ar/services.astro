@@ -1,0 +1,67 @@
+---
+import BaseLayoutRTL from "../../layouts/BaseLayoutRTL.astro";
+
+const services = [
+	{
+		title: "تصميم وتطوير المواقع الإلكترونية",
+		description: "مواقع إلكترونية مخصصة ومتجاوبة تعمل كواجهة رقمية لعملك.",
+	},
+	{
+		title: "صيانة المواقع والدعم الفني",
+		description: "تحديثات وإصلاحات ودعم فني لضمان أمان وسرعة موقعك.",
+	},
+	{
+		title: "تصميم واجهات وتجربة المستخدم",
+		description: "تصميم واجهات تركز على المستخدم لضمان سهولة التنقل والتفاعل.",
+	},
+	{
+		title: "العلامة التجارية والتغليف",
+		description: "ابتكار هويات بصرية وحلول تغليف تجعل علامتك التجارية مميزة.",
+	},
+	{
+		title: "التسويق الرقمي",
+		description: "استراتيجيات تسويقية مدفوعة بالبيانات لزيادة ظهورك وجذب العملاء.",
+	},
+	{
+		title: "تجارب رقمية",
+		description: "حلول رقمية تفاعلية تغمر جمهورك وتزيد من تفاعلهم.",
+	},
+	{
+		title: "المطبوعات",
+		description: "تصميم احترافي للتقارير السنوية والكتالوجات والكتيبات.",
+	},
+	{
+		title: "حلول تقنية واستشارات",
+		description: "إرشادات تقنية لمساعدتك في اختيار وتحسين أدوات عملك.",
+	},
+];
+---
+
+<BaseLayoutRTL
+	title="خدماتنا"
+	description="اكتشف خدمات واليا في تصميم المواقع وتجربة المستخدم والعلامات التجارية والتسويق الرقمي."
+>
+	<section class="mx-auto max-w-7xl px-6 py-20 md:py-28">
+		<div class="max-w-3xl">
+			<p class="text-sm font-semibold tracking-[0.16em] text-primary-green dark:text-dark-green">
+				واليا
+			</p>
+			<h1 class="mt-4 text-4xl font-semibold leading-relaxed tracking-tight text-primary-dark dark:text-dark-text md:text-5xl">
+				خدماتنا
+			</h1>
+		</div>
+
+		<div class="mt-12 grid gap-5 md:grid-cols-2">
+			{
+				services.map((service) => (
+					<article class="border border-border border-r-4 border-r-primary-green bg-white p-7 dark:bg-dark-surface md:p-9">
+						<h2 class="text-xl font-semibold leading-8 text-primary-dark dark:text-dark-text">
+							{service.title}
+						</h2>
+						<p class="mt-3 leading-7 text-text">{service.description}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+</BaseLayoutRTL>

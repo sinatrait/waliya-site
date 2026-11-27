@@ -1,6 +1,12 @@
 ---
 const year = new Date().getFullYear();
 const isArabic = Astro.url.pathname.startsWith("/ar");
+const localizedHref = (href: string) =>
+	isArabic && ["/", "/services", "/about", "/contact"].includes(href)
+		? href === "/"
+			? "/ar/"
+			: `/ar${href}`
+		: href;
 ---
 
 <footer class="border-t border-border bg-surface">
@@ -21,17 +27,17 @@ const isArabic = Astro.url.pathname.startsWith("/ar");
 
 		<nav aria-label={isArabic ? "روابط التذييل" : "Footer navigation"} class="flex flex-wrap gap-x-6 gap-y-3">
 			<a href={isArabic ? "/ar/" : "/"} class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">{isArabic ? "الرئيسية" : "Home"}</a>
-			<a href="/services" class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">
+			<a href={localizedHref("/services")} class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">
 				{isArabic ? "خدماتنا" : "Services"}
 			</a>
-			<a href="/about" class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">{isArabic ? "من نحن" : "About"}</a>
+			<a href={localizedHref("/about")} class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">{isArabic ? "من نحن" : "About"}</a>
 			<a
 				href="/client-stories"
 				class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green"
 			>
 				{isArabic ? "قصص النجاح" : "Client Stories"}
 			</a>
-			<a href="/contact" class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">
+			<a href={localizedHref("/contact")} class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">
 				{isArabic ? "اتصل بنا" : "Contact"}
 			</a>
 			<a
