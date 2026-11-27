@@ -1,8 +1,12 @@
 ---
+const isArabic = Astro.url.pathname.startsWith("/ar");
+
 const plans = [
 	{
 		name: "Essential",
+		arabicName: "الباقة الأساسية",
 		subtitle: "For establishing a professional digital presence.",
+		arabicSubtitle: "لإنشاء حضور رقمي احترافي.",
 		features: [
 			"Up to 5 Pages",
 			"Mobile-Responsive",
@@ -10,10 +14,13 @@ const plans = [
 			"Basic SEO",
 			"1 Month Support",
 		],
+		arabicFeatures: ["حتى 5 صفحات", "متوافق مع الجوال", "نموذج اتصال", "تحسين محركات البحث الأساسي", "دعم لمدة شهر"],
 	},
 	{
 		name: "Professional",
+		arabicName: "الباقة الاحترافية",
 		subtitle: "For growing businesses focused on lead generation.",
+		arabicSubtitle: "للشركات النامية التي تركز على جذب العملاء.",
 		recommended: true,
 		features: [
 			"Up to 8 Pages",
@@ -22,16 +29,20 @@ const plans = [
 			"Blog Setup",
 			"3 Months Support",
 		],
+		arabicFeatures: ["حتى 8 صفحات", "تحسين محركات البحث المتقدم", "تحليلات جوجل", "إعداد المدونة", "دعم لمدة 3 أشهر"],
 	},
 	{
 		name: "Premium",
+		arabicName: "الباقة المتميزة",
 		subtitle: "For custom functionality and large-scale needs.",
+		arabicSubtitle: "لوظائف مخصصة واحتياجات واسعة النطاق.",
 		features: [
 			"Unlimited Pages",
 			"E-commerce/Booking",
 			"Custom Integrations",
 			"Priority Support",
 		],
+		arabicFeatures: ["صفحات غير محدودة", "التجارة الإلكترونية/الحجز", "تكاملات مخصصة", "دعم ذو أولوية"],
 	},
 ];
 ---
@@ -42,7 +53,10 @@ const plans = [
 	aria-hidden="true"
 >
 	<div
-		class="relative my-auto max-h-[calc(100vh-2rem)] w-full max-w-5xl overflow-y-auto rounded-lg border border-border bg-white p-6 text-text dark:border-dark-border dark:bg-dark-page dark:text-dark-text sm:p-8 lg:p-10"
+		class:list={[
+			"relative my-auto max-h-[calc(100vh-2rem)] w-full max-w-5xl overflow-y-auto rounded-lg border border-border bg-white p-6 text-text dark:border-dark-border dark:bg-dark-page dark:text-dark-text sm:p-8 lg:p-10",
+			isArabic ? "text-right" : "text-left",
+		]}
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby="pricing-modal-title"
@@ -51,9 +65,12 @@ const plans = [
 	>
 		<button
 			type="button"
-			class="absolute right-4 top-4 inline-flex size-10 items-center justify-center rounded-full text-text transition-colors hover:bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-green dark:text-dark-text dark:hover:bg-dark-surface dark:focus-visible:outline-dark-green sm:right-6 sm:top-6"
+			class:list={[
+				"absolute top-4 inline-flex size-10 items-center justify-center rounded-full text-text transition-colors hover:bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-green dark:text-dark-text dark:hover:bg-dark-surface dark:focus-visible:outline-dark-green sm:top-6",
+				isArabic ? "left-4 sm:left-6" : "right-4 sm:right-6",
+			]}
 			data-close-pricing-modal
-			aria-label="Close pricing"
+			aria-label={isArabic ? "إغلاق الباقات" : "Close pricing"}
 		>
 			<svg
 				class="size-5"
@@ -68,18 +85,20 @@ const plans = [
 			</svg>
 		</button>
 
-		<div class="mx-auto max-w-2xl pr-10 text-center sm:px-8">
+		<div class:list={["mx-auto max-w-2xl text-center", isArabic ? "pl-10 sm:px-8" : "pr-10 sm:px-8"]}>
 			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
-				Pricing
+				{isArabic ? "باقات الأسعار" : "Pricing"}
 			</p>
 			<h2
 				id="pricing-modal-title"
 				class="mt-3 text-2xl font-semibold tracking-tight text-primary-dark dark:text-dark-text sm:text-3xl"
 			>
-				Website Packages
+				{isArabic ? "باقات تصميم المواقع" : "Website Packages"}
 			</h2>
 			<p id="pricing-modal-description" class="mt-3 text-sm leading-6 text-text sm:text-base">
-				Straightforward packages designed to get your business online without hidden costs.
+				{isArabic
+					? "باقات واضحة مصممة لإطلاق عملك على الإنترنت دون تكاليف خفية."
+					: "Straightforward packages designed to get your business online without hidden costs."}
 			</p>
 		</div>
 
@@ -96,7 +115,7 @@ const plans = [
 					>
 						{plan.recommended && (
 							<span class="absolute -top-3 left-6 bg-[#B5653A] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
-								Recommended
+								{isArabic ? "موصى بها" : "Recommended"}
 							</span>
 						)}
 						<h3
@@ -105,7 +124,7 @@ const plans = [
 								plan.recommended ? "text-white" : "text-primary-dark dark:text-dark-text",
 							]}
 						>
-							{plan.name}
+							{isArabic ? plan.arabicName : plan.name}
 						</h3>
 						<p
 							class:list={[
@@ -113,11 +132,11 @@ const plans = [
 								plan.recommended ? "text-white/75" : "text-gray-500 dark:text-gray-400",
 							]}
 						>
-							{plan.subtitle}
+							{isArabic ? plan.arabicSubtitle : plan.subtitle}
 						</p>
 
 						<ul class="mt-5 flex-1 space-y-3 border-t border-current/20 pt-5">
-							{plan.features.map((feature) => (
+							{(isArabic ? plan.arabicFeatures : plan.features).map((feature) => (
 								<li class="flex items-start gap-3 text-sm leading-5">
 									<svg
 										class:list={[
@@ -140,7 +159,7 @@ const plans = [
 						</ul>
 
 						<a
-							href={`/contact?plan=${encodeURIComponent(plan.name)}`}
+							href={`${isArabic ? "/ar" : ""}/contact?plan=${encodeURIComponent(plan.name)}`}
 							class:list={[
 								"mt-6 inline-flex min-h-11 items-center justify-center px-4 py-3 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
 								plan.recommended
@@ -148,7 +167,7 @@ const plans = [
 									: "border border-primary-green text-primary-green hover:bg-primary-green hover:text-white focus-visible:outline-primary-green dark:border-dark-green dark:text-dark-green dark:hover:bg-dark-green dark:hover:text-dark-page dark:focus-visible:outline-dark-green",
 							]}
 						>
-							Choose Plan
+							{isArabic ? "اختر الباقة" : "Choose Plan"}
 						</a>
 					</article>
 				))

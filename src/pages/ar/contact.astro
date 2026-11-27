@@ -14,7 +14,7 @@ const countries = getNames();
 			<p class="text-sm font-semibold tracking-[0.16em] text-primary-green dark:text-dark-green">
 				واليا
 			</p>
-			<h1 class="mt-4 text-4xl font-semibold leading-relaxed tracking-tight text-primary-dark dark:text-dark-text md:text-5xl">
+			<h1 id="contact-heading" class="mt-4 text-4xl font-semibold leading-relaxed tracking-tight text-primary-dark dark:text-dark-text md:text-5xl">
 				اتصل بنا
 			</h1>
 			<p class="mt-5 text-lg leading-8 text-text">
@@ -147,6 +147,39 @@ const countries = getNames();
 </BaseLayoutRTL>
 
 <script>
+	const initializePackageSelection = () => {
+		const plan = new URLSearchParams(window.location.search).get("plan");
+		if (!plan) return;
+
+		const planNames: Record<string, string> = {
+			Essential: "الباقة الأساسية",
+			Professional: "الباقة الاحترافية",
+			Premium: "الباقة المتميزة",
+		};
+		const planName = planNames[plan];
+		if (!planName) return;
+
+		const heading = document.getElementById("contact-heading");
+		if (heading) heading.textContent = `لنتحدث عن ${planName}`;
+
+		const message = document.getElementById("message");
+		if (!(message instanceof HTMLTextAreaElement) || message.value.trim()) return;
+
+		message.value = `مرحباً فريق واليا،
+
+أنا مهتم بـ ${planName} لتصميم المواقع. إليكم بعض التفاصيل عن مشروعي:
+
+- اسم الشركة:
+- الدولة:
+- الهدف الرئيسي من الموقع:
+- هل لديكم محتوى أو هوية بصرية حالية؟
+
+يرجى إخباري بالخطوات التالية للبدء.`;
+	};
+
+	document.addEventListener("astro:page-load", initializePackageSelection);
+	initializePackageSelection();
+
 	const initializeVisitorLocation = async () => {
 		const countryField = document.getElementById("country");
 		const timeZoneField = document.getElementById("time-zone");
