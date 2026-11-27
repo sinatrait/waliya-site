@@ -12,8 +12,8 @@ const links = [
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const englishPath = isArabic ? currentPath.replace(/^\/ar(?=\/|$)/, "") || "/" : currentPath;
 const localizedHref = (href: string) =>
-	isArabic && href !== "/client-stories" ? (href === "/" ? "/ar/" : `/ar${href}`) : href;
-const supportedLanguagePaths = new Set(["/", "/services", "/about", "/contact"]);
+	isArabic ? (href === "/" ? "/ar/" : `/ar${href}`) : href;
+const supportedLanguagePaths = new Set(["/", "/services", "/about", "/contact", "/client-stories"]);
 const languageHref = supportedLanguagePaths.has(englishPath)
 	? isArabic
 		? englishPath

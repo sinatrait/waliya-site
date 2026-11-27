@@ -1,0 +1,115 @@
+---
+import BaseLayoutRTL from "../../layouts/BaseLayoutRTL.astro";
+
+const stories = [
+	{
+		client: "The United Trust",
+		image: "/images/united-trust.jpg",
+		imageAlt: "The United Trust homepage",
+		challenge:
+			"تقديم عقود من العمل الخيري المتنوع (التعليم، الصحة، الإسكان) بطريقة موثوقة ومنظمة للجهات المانحة.",
+		action:
+			"تصميم وتطوير موقع شامل ينظم المبادرات المختلفة ويبرز الشهادات ويعكس حجم تأثيرهم.",
+		result: "حضور إلكتروني احترافي يعكس مصداقية المؤسسة.",
+		url: "https://www.theunitedtrust.in/",
+	},
+	{
+		client: "The United Group",
+		image: "/images/united-group.jpg",
+		imageAlt: "The United Group homepage",
+		challenge:
+			"إنشاء حضور رقمي يعكس حجم شركة متعددة القطاعات (التمويل، البنية التحتية، التجارة).",
+		action:
+			"بناء موقع هيكلي يوضح الأقسام المختلفة ويعزز قيم النزاهة والتميز.",
+		result: "موقع يعمل كمركز موثوق للعمليات المتنوعة للشركة.",
+		url: "https://www.theunitedgroup.co.in/",
+	},
+	{
+		client: "Soulax",
+		image: "/images/soulax.jpg",
+		imageAlt: "Soulax homepage",
+		challenge:
+			"ترجمة القدرات التقنية المعقدة (الذكاء الاصطناعي وإنترنت الأشياء) إلى رسائل واضحة تركز على النتائج.",
+		action:
+			"تطوير موقع حديث يعتمد على التطبيقات الواقعية والنتائج القابلة للقياس.",
+		result: "حضور رقمي راقٍ يدعم جهود المبيعات والشراكات.",
+		url: "https://www.soulax.io/",
+	},
+	{
+		client: "Aleena Mansur",
+		image: "/images/aleena-mansur.jpg",
+		imageAlt: "Aleena Mansur homepage",
+		challenge:
+			"بناء علامة تجارية شخصية عالية الطاقة تعكس رياضة السوبركروس وتجذب الرعاة.",
+		action:
+			"تصميم موقع ديناميكي وجذاب يعرض مسيرتها المهنية وإنجازاتها.",
+		result: "مركز علامة تجارية قوي يجذب الرعاة والاهتمام الإعلامي.",
+		url: "https://www.aleenamansur.com/",
+	},
+];
+---
+
+<BaseLayoutRTL
+	title="قصص النجاح"
+	description="أمثلة على كيفية مساعدة المؤسسات على بناء حضور رقمي موثوق."
+>
+	<section class="mx-auto max-w-7xl px-6 py-20 md:py-28">
+		<div class="max-w-3xl">
+			<p class="text-sm font-semibold tracking-[0.16em] text-primary-green dark:text-dark-green">
+				واليا
+			</p>
+			<h1 class="mt-4 text-4xl font-semibold leading-relaxed tracking-tight text-primary-dark dark:text-dark-text md:text-5xl">
+				قصص النجاح
+			</h1>
+			<p class="mt-5 text-lg leading-8 text-text">
+				أمثلة توضيحية - تمثل نوعية العمل الذي نقوم به. سيتم تحديث قصص العملاء فور اكتمال المشاريع.
+			</p>
+		</div>
+
+		<div class="mt-12 grid gap-6 md:grid-cols-2">
+			{
+				stories.map((story) => (
+					<article class="group flex flex-col overflow-hidden border border-border bg-white dark:bg-dark-surface">
+						<div class="h-56 overflow-hidden border-b border-border">
+							<img
+								src={story.image}
+								alt={story.imageAlt}
+								loading="lazy"
+								class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+							/>
+						</div>
+						<div class="flex flex-1 flex-col p-7 md:p-8">
+							<h2 class="text-2xl font-semibold tracking-tight text-primary-dark dark:text-dark-text" dir="ltr">
+								{story.client}
+							</h2>
+							<dl class="mt-7 space-y-6">
+								<div>
+									<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">التحدي</dt>
+									<dd class="mt-2 leading-7 text-text">{story.challenge}</dd>
+								</div>
+								<div>
+									<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">ما فعلناه</dt>
+									<dd class="mt-2 leading-7 text-text">{story.action}</dd>
+								</div>
+								<div>
+									<dt class="text-sm font-semibold text-primary-green dark:text-dark-green">النتيجة</dt>
+									<dd class="mt-2 leading-7 text-text">{story.result}</dd>
+								</div>
+							</dl>
+							<a
+								href={story.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								dir="ltr"
+								class="mt-8 inline-flex w-fit items-center gap-2 border-b border-primary-green pb-1 text-sm font-semibold text-primary-green transition-colors hover:text-primary-dark dark:border-dark-green dark:text-dark-green dark:hover:text-dark-text"
+							>
+								Visit Website
+								<span aria-hidden="true">↗</span>
+							</a>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</section>
+</BaseLayoutRTL>

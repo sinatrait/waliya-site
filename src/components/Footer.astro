@@ -2,7 +2,7 @@
 const year = new Date().getFullYear();
 const isArabic = Astro.url.pathname.startsWith("/ar");
 const localizedHref = (href: string) =>
-	isArabic && ["/", "/services", "/about", "/contact"].includes(href)
+	isArabic && ["/", "/services", "/about", "/contact", "/client-stories"].includes(href)
 		? href === "/"
 			? "/ar/"
 			: `/ar${href}`
@@ -32,7 +32,7 @@ const localizedHref = (href: string) =>
 			</a>
 			<a href={localizedHref("/about")} class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green">{isArabic ? "من نحن" : "About"}</a>
 			<a
-				href="/client-stories"
+				href={localizedHref("/client-stories")}
 				class="text-sm text-text transition-colors hover:text-primary-green dark:hover:text-dark-green"
 			>
 				{isArabic ? "قصص النجاح" : "Client Stories"}

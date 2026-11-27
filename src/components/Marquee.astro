@@ -1,10 +1,12 @@
 ---
-const message =
-	"WEBSITE DESIGN & DEVELOPMENT • UI/UX DESIGN • DIGITAL MARKETING • BRANDING & PACKAGING • SERVING CLIENTS GLOBALLY • ";
+const isArabic = Astro.url.pathname.startsWith("/ar");
+const message = isArabic
+	? "تصميم وتطوير المواقع • تصميم واجهات المستخدم • التسويق الرقمي • الهوية التجارية والتغليف • نخدم العملاء عالمياً • "
+	: "WEBSITE DESIGN & DEVELOPMENT • UI/UX DESIGN • DIGITAL MARKETING • BRANDING & PACKAGING • SERVING CLIENTS GLOBALLY • ";
 ---
 
-<section class="overflow-hidden bg-[#3A6931] py-5 text-white" aria-label="Our services">
-	<div class="marquee-track flex w-max" aria-hidden="true">
+<section class="overflow-hidden bg-[#3A6931] py-5 text-white" aria-label={isArabic ? "خدماتنا" : "Our services"}>
+	<div class:list={["marquee-track flex w-max", isArabic && "marquee-track-rtl"]} aria-hidden="true">
 		<div class="marquee-group flex shrink-0 items-center">
 			<span class="whitespace-nowrap px-4 text-lg font-bold tracking-widest md:text-2xl">{message}</span>
 		</div>
@@ -26,6 +28,20 @@ const message =
 
 		to {
 			transform: translateX(-50%);
+		}
+	}
+
+	.marquee-track-rtl {
+		animation-name: marquee-scroll-rtl;
+	}
+
+	@keyframes marquee-scroll-rtl {
+		from {
+			transform: translateX(0);
+		}
+
+		to {
+			transform: translateX(50%);
 		}
 	}
 
