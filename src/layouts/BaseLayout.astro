@@ -17,6 +17,23 @@ const {
 const pageTitle = `Waliya | ${title}`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isArabic = currentPath === "/ar" || currentPath.startsWith("/ar/");
+const englishPath = isArabic ? currentPath.replace(/^\/ar(?=\/|$)/, "") || "/" : currentPath;
+const translatedPaths = new Set(["/", "/services", "/about", "/contact", "/client-stories"]);
+const languageAlternates = translatedPaths.has(englishPath)
+	? [
+			{ language: "en-AE", path: englishPath },
+			{ language: "en-SA", path: englishPath },
+			{ language: "en", path: englishPath },
+			{ language: "ar-AE", path: `/ar${englishPath === "/" ? "/" : englishPath}` },
+			{ language: "ar-SA", path: `/ar${englishPath === "/" ? "/" : englishPath}` },
+			{ language: "ar", path: `/ar${englishPath === "/" ? "/" : englishPath}` },
+			{ language: "x-default", path: "/" },
+		]
+	: [];
+const absoluteLocalizedUrl = (path: string) =>
+	new URL(path.endsWith("/") ? path : `${path}/`, Astro.site);
 ---
 
 <!doctype html>
@@ -51,13 +68,13 @@ const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonicalUrl} />
-		{Astro.url.pathname === "/" && (
-			<>
-				<link rel="alternate" hreflang="en" href="https://waliya.in/" />
-				<link rel="alternate" hreflang="ar" href="https://waliya.in/ar/" />
-				<link rel="alternate" hreflang="x-default" href="https://waliya.in/" />
-			</>
-		)}
+		{languageAlternates.map((alternate) => (
+			<link
+				rel="alternate"
+				hreflang={alternate.language}
+				href={absoluteLocalizedUrl(alternate.path)}
+			/>
+		))}
 		<title>{pageTitle}</title>
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Waliya" />
