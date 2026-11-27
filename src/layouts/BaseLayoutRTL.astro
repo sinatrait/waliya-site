@@ -1,0 +1,106 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Digital Solutions & Business Services",
+	description = "Waliya provides digital solutions and business services for growing businesses.",
+} = Astro.props;
+
+const pageTitle = `Waliya | ${title}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+	<head>
+		<script is:inline async src="https://www.googletagmanager.com/gtm.js?id=GTM-TCTWZ7GX"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+		</script>
+		<meta charset="utf-8" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style is:global>
+			html[lang="ar"] body {
+				font-family: "Tajawal", sans-serif;
+			}
+		</style>
+		<script is:inline>
+			const applyTheme = (root) => {
+				let preference = null;
+				try {
+					preference = localStorage.getItem("theme");
+				} catch (error) {
+					console.error("Unable to read the saved theme preference.", error);
+				}
+
+				root.classList.toggle("dark", preference !== "light");
+			};
+
+			applyTheme(document.documentElement);
+			document.addEventListener("astro:before-swap", (event) => {
+				applyTheme(event.newDocument.documentElement);
+			});
+		</script>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+		<title>{pageTitle}</title>
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Waliya" />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:alt" content="Waliya digital solutions" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl} />
+		<ClientRouter />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+		<script is:inline>
+			if (document.documentElement.dataset.contactOriginTrackingBound !== "true") {
+				document.documentElement.dataset.contactOriginTrackingBound = "true";
+				document.addEventListener("click", (event) => {
+					if (!(event.target instanceof Element)) return;
+					const link = event.target.closest("a[href]");
+					if (!(link instanceof HTMLAnchorElement) || link.dataset.isNav === "true") return;
+
+					const destination = new URL(link.href, window.location.href);
+					if (destination.origin !== window.location.origin || destination.pathname !== "/contact") return;
+					if (window.location.pathname === "/contact") return;
+
+					try {
+						sessionStorage.setItem("contactOriginPath", window.location.pathname);
+					} catch (error) {
+						console.error("Unable to save the contact link origin.", error);
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

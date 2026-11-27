@@ -51,6 +51,13 @@ const ogImageUrl = new URL("/images/hero.jpg", Astro.site);
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonicalUrl} />
+		{Astro.url.pathname === "/" && (
+			<>
+				<link rel="alternate" hreflang="en" href="https://waliya.in/" />
+				<link rel="alternate" hreflang="ar" href="https://waliya.in/ar/" />
+				<link rel="alternate" hreflang="x-default" href="https://waliya.in/" />
+			</>
+		)}
 		<title>{pageTitle}</title>
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Waliya" />

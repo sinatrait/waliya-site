@@ -1,0 +1,94 @@
+---
+import BaseLayoutRTL from "../../layouts/BaseLayoutRTL.astro";
+---
+
+<BaseLayoutRTL title="مرحبًا بكم في واليا">
+	<section class="bg-surface dark:bg-dark-page">
+		<div class="mx-auto max-w-7xl px-6 py-24 md:py-32">
+			<div class="max-w-4xl">
+				<p class="text-sm font-semibold tracking-[0.16em] text-primary-green dark:text-dark-green">
+					واليا
+				</p>
+				<h1 class="mt-5 text-4xl font-semibold leading-relaxed tracking-tight text-primary-dark dark:text-dark-text md:text-6xl">
+					حلول رقمية وخدمات أعمال تدفعك إلى الأمام
+				</h1>
+				<p class="mt-6 max-w-3xl text-lg leading-9 text-text md:text-xl">
+					نساعد الشركات الناشئة والشركات الصغيرة في جميع أنحاء العالم على بناء حضور رقمي احترافي والحصول على دعم عملي للأعمال.
+				</p>
+				<div class="mt-9 flex flex-wrap gap-4">
+					<a
+						href="/contact"
+						class="inline-flex items-center justify-center bg-primary-green px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+					>
+						ابدأ محادثة
+					</a>
+					<a
+						href="#services"
+						class="inline-flex items-center justify-center border border-primary-green px-7 py-4 text-sm font-semibold text-primary-green transition-colors hover:bg-primary-green hover:text-white dark:text-dark-green"
+					>
+						استكشف خدماتنا
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="services" class="mx-auto max-w-7xl px-6 py-20 md:py-24">
+		<div class="max-w-2xl">
+			<p class="text-sm font-semibold tracking-[0.16em] text-primary-green dark:text-dark-green">
+				واليا
+			</p>
+			<h2 class="mt-4 text-3xl font-semibold tracking-tight text-primary-dark dark:text-dark-text md:text-4xl">
+				خدماتنا
+			</h2>
+		</div>
+		<div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+			<article class="border border-border border-r-4 border-r-primary-green bg-white p-7 dark:bg-dark-surface">
+				<h3 class="text-lg font-semibold leading-8 text-primary-dark dark:text-dark-text">
+					تصميم وتطوير المواقع الإلكترونية
+				</h3>
+				<p class="mt-3 text-sm leading-7 text-text">
+					مواقع إلكترونية مخصصة ومتجاوبة تعمل كواجهة رقمية لعملك.
+				</p>
+			</article>
+			<article class="border border-border border-r-4 border-r-primary-green bg-white p-7 dark:bg-dark-surface">
+				<h3 class="text-lg font-semibold leading-8 text-primary-dark dark:text-dark-text">
+					تصميم واجهات وتجربة المستخدم
+				</h3>
+				<p class="mt-3 text-sm leading-7 text-text">
+					تصميم واجهات تركز على المستخدم لضمان سهولة التنقل والتفاعل.
+				</p>
+			</article>
+			<article class="border border-border border-r-4 border-r-primary-green bg-white p-7 dark:bg-dark-surface">
+				<h3 class="text-lg font-semibold leading-8 text-primary-dark dark:text-dark-text">
+					العلامة التجارية والتغليف
+				</h3>
+				<p class="mt-3 text-sm leading-7 text-text">
+					ابتكار هويات بصرية وحلول تغليف تجعل علامتك التجارية مميزة.
+				</p>
+			</article>
+			<article class="border border-border border-r-4 border-r-primary-green bg-white p-7 dark:bg-dark-surface">
+				<h3 class="text-lg font-semibold leading-8 text-primary-dark dark:text-dark-text">
+					التسويق الرقمي
+				</h3>
+				<p class="mt-3 text-sm leading-7 text-text">
+					استراتيجيات تسويقية مدفوعة بالبيانات لزيادة ظهورك وجذب العملاء.
+				</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="bg-primary-dark dark:bg-dark-page">
+		<div class="mx-auto flex max-w-7xl flex-col items-start gap-8 px-6 py-16 md:flex-row md:items-center md:justify-between md:py-20">
+			<h2 class="max-w-2xl text-3xl font-semibold leading-relaxed tracking-tight text-white md:text-4xl">
+				هل أنت مستعد لتنمية أعمالك؟
+			</h2>
+			<a
+				href="/contact"
+				class="inline-flex items-center justify-center bg-white px-6 py-3.5 text-sm font-semibold text-primary-dark transition-colors hover:bg-surface"
+			>
+				اتصل بنا
+			</a>
+		</div>
+	</section>
+</BaseLayoutRTL>

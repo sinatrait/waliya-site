@@ -1,0 +1,123 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const valueProps = [
+	{
+		title: "Timezone Advantage",
+		description:
+			"We operate with a 1.5-hour overlap with UAE (GST), ensuring real-time communication.",
+	},
+	{
+		title: "Global Standards",
+		description:
+			"We build to international standards, focusing on high-end UX/UI and performance.",
+	},
+	{
+		title: "Cost Efficiency",
+		description:
+			"Get premium agency quality without the overhead of local Middle Eastern agency rates.",
+	},
+];
+
+const services = [
+	{
+		title: "Website Design",
+		description: "High-performing websites built to present your business with clarity and confidence.",
+	},
+	{
+		title: "UI/UX",
+		description: "Thoughtful digital journeys and polished interfaces designed around your customers.",
+	},
+	{
+		title: "Branding",
+		description: "Distinctive visual identities that help your business stand out in competitive markets.",
+	},
+	{
+		title: "Digital Marketing",
+		description: "Strategic campaigns that strengthen visibility and attract qualified audiences.",
+	},
+];
+---
+
+<BaseLayout
+	title="Digital Solutions for the Middle East"
+	description="Premium websites, brands, and digital experiences for ambitious businesses in the UAE, Saudi Arabia, and across the Middle East."
+>
+	<section class="bg-surface dark:bg-dark-page">
+		<div class="mx-auto max-w-7xl px-6 py-24 md:py-32">
+			<div class="max-w-4xl">
+				<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
+					For ambitious businesses across the Gulf
+				</p>
+				<h1 class="mt-5 text-4xl font-semibold leading-tight tracking-tight text-primary-dark dark:text-dark-text md:text-6xl">
+					Premium Digital Solutions for Businesses in the Middle East.
+				</h1>
+				<p class="mt-6 max-w-3xl text-lg leading-8 text-text md:text-xl">
+					Waliya partners with ambitious companies in the UAE, Saudi Arabia, and beyond to build
+					world-class websites, brands, and digital experiences. We offer premium quality with a
+					seamless timezone overlap.
+				</p>
+				<a
+					href="/contact"
+					class="mt-9 inline-flex items-center justify-center bg-primary-green px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-green"
+				>
+					Start a Conversation
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="mx-auto max-w-7xl px-6 py-20 md:py-24">
+		<div class="grid gap-5 md:grid-cols-3">
+			{
+				valueProps.map((value) => (
+					<article class="border border-border bg-white p-7 dark:bg-dark-surface md:p-8">
+						<h2 class="text-xl font-semibold tracking-tight text-primary-dark dark:text-dark-text">
+							{value.title}
+						</h2>
+						<p class="mt-3 leading-7 text-text">{value.description}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="bg-surface py-20 dark:bg-dark-surface md:py-24">
+		<div class="mx-auto max-w-7xl px-6">
+			<div class="max-w-2xl">
+				<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary-green dark:text-dark-green">
+					How we can help
+				</p>
+				<h2 class="mt-4 text-3xl font-semibold tracking-tight text-primary-dark dark:text-dark-text md:text-4xl">
+					Digital services built around your next stage of growth.
+				</h2>
+			</div>
+			<div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+				{
+					services.map((service) => (
+						<article class="border border-border border-l-4 border-l-primary-green bg-white p-7 dark:bg-dark-page">
+							<h3 class="text-lg font-semibold text-primary-dark dark:text-dark-text">
+								{service.title}
+							</h3>
+							<p class="mt-3 text-sm leading-7 text-text">{service.description}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-primary-dark dark:bg-dark-page">
+		<div class="mx-auto flex max-w-7xl flex-col items-start gap-8 px-6 py-16 md:flex-row md:items-center md:justify-between md:py-20">
+			<h2 class="max-w-2xl text-3xl font-semibold tracking-tight text-white md:text-4xl">
+				Ready to elevate your digital presence in the Gulf?
+			</h2>
+			<a
+				href="/contact"
+				class="inline-flex items-center justify-center bg-white px-6 py-3.5 text-sm font-semibold text-primary-dark transition-colors hover:bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+			>
+				Contact Us
+			</a>
+		</div>
+	</section>
+</BaseLayout>
